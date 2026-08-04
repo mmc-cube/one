@@ -170,7 +170,10 @@ def build_datasheet_zip(component_names: list[str]) -> io.BytesIO | None:
         for folder in folders:
             for file_path in folder.rglob("*"):
                 if file_path.is_file():
-                    archive.write(file_path, file_path.relative_to(COMPONENT_LIB_BASE))
+                    arcname = str(file_path.relative_to(COMPONENT_LIB_BASE))
+                    info = zipfile.ZipInfo(arcname, (2024, 1, 1, 0, 0, 0))
+                    with open(file_path, 'rb') as src:
+                        archive.writestr(info, src.read())
     buffer.seek(0)
     return buffer
 
