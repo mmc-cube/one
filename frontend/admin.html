@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>白砾电子 · 主题测试活动管理后台</title>
+<style>
+  :root{
+    --blue:#1677ff;
+    --blue-2:#2f7cf6;
+    --blue-soft:#eaf3ff;
+    --bg:#f5f7fa;
+    --panel:#ffffff;
+    --border:#e7ebf0;
+    --line:#edf0f4;
+    --text:#1f2733;
+    --muted:#8a94a3;
+    --green:#20b26b;
+    --orange:#ff8a34;
+    --red:#f04d4f;
+    --shadow:0 1px 3px rgba(31,39,51,.04),0 6px 18px rgba(31,39,51,.04);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;
+    color:var(--text);background:var(--bg);font-size:13px;overflow:hidden;
+  }
+  button,input,select,textarea{font:inherit}
+  button{cursor:pointer}
+  .app{width:100vw;height:100vh;min-width:1180px;background:var(--bg)}
+  .hidden{display:none!important}
+
+  /* icons */
+  .ico{width:17px;height:17px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+  .ico svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .logo-mark{width:28px;height:28px;border-radius:8px;background:var(--blue);display:grid;place-items:center;box-shadow:0 4px 10px rgba(22,119,255,.22)}
+  .logo-mark svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+
+  /* top bar */
+  .topbar{height:64px;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:relative;z-index:20}
+  .brand{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:650;letter-spacing:.2px}
+  .top-actions{display:flex;align-items:center;gap:18px;color:#687386}
+  .circle-action{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;transition:.2s}
+  .circle-action:hover{background:#f3f6fa;color:var(--blue)}
+  .admin{display:flex;align-items:center;gap:8px;color:#4d5665;font-weight:500}
+  .avatar{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#e8f2ff;color:var(--blue)}
+
+  /* login */
+  .login-shell{height:100%;background:#f7f9fb}
+  .login-main{height:calc(100% - 64px);display:flex;align-items:flex-start;justify-content:center;padding-top:84px;background:radial-gradient(circle at 50% 10%,#fff 0,#f8fafc 38%,#f3f6f9 100%)}
+  .login-card{width:410px;background:#fff;border:1px solid var(--border);border-radius:4px;box-shadow:0 8px 30px rgba(17,24,39,.07);padding:32px 32px 24px}
+  .login-title{text-align:center;font-size:21px;font-weight:700;margin-bottom:7px}
+  .login-sub{text-align:center;color:var(--muted);margin-bottom:28px}
+  .form-control{height:44px;border:1px solid #dfe4eb;border-radius:4px;background:#fff;display:flex;align-items:center;padding:0 13px;gap:10px;color:#94a0af;margin-bottom:14px;transition:.2s}
+  .form-control:focus-within{border-color:#79adff;box-shadow:0 0 0 3px rgba(22,119,255,.08)}
+  .form-control input{border:0;outline:0;flex:1;color:#3c4655;background:transparent}
+  .form-control input::placeholder{color:#a7b0bc}
+  .remember{display:flex;align-items:center;gap:8px;color:#697487;margin:4px 0 14px}
+  .remember input{appearance:none;width:15px;height:15px;border:1px solid #94b8f7;border-radius:3px;position:relative}
+  .remember input:checked{background:var(--blue);border-color:var(--blue)}
+  .remember input:checked:after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .login-error{min-height:38px;background:#fff1f0;border:1px solid #ffd4d2;border-radius:4px;color:#e24645;display:flex;align-items:center;gap:8px;padding:8px 12px;margin-bottom:14px}
+  .primary-btn{height:42px;border:0;border-radius:4px;background:linear-gradient(180deg,#247dff,#1267df);color:#fff;font-weight:600;box-shadow:0 5px 12px rgba(22,119,255,.18)}
+  .primary-btn:hover{filter:brightness(1.03)}
+  .login-btn{width:100%}
+  .login-note{text-align:center;color:#9aa3af;margin-top:30px}
+
+  /* admin shell */
+  .admin-shell{height:100%;display:flex;flex-direction:column}
+  .workspace{height:calc(100% - 64px);display:flex;min-height:0}
+  .sidebar{width:210px;background:#fff;border-right:1px solid var(--border);padding:24px 14px;flex:none}
+  .nav-item{height:46px;border-radius:7px;display:flex;align-items:center;gap:12px;padding:0 14px;color:#4b5564;margin-bottom:7px;font-weight:520;transition:.18s;user-select:none}
+  .nav-item:hover{background:#f5f8fc;color:#275fba}
+  .nav-item.active{background:var(--blue-soft);color:var(--blue);font-weight:650}
+  .content{flex:1;min-width:0;overflow:auto;padding:24px 26px 28px;position:relative}
+  .content.drawer-open{padding-right:26px}
+  .page{display:none}
+  .page.active{display:block}
+  .page-title-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+  .page-title{font-size:22px;font-weight:700;letter-spacing:.1px;margin:0 0 5px}
+  .page-sub{color:#8a94a3;font-size:12px}
+  .toolbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .ghost-btn{height:36px;padding:0 15px;border:1px solid #8ab9ff;background:#fff;color:var(--blue);border-radius:5px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:600}
+  .ghost-btn:hover{background:#f5f9ff}
+  .inputbox,.selectbox,.datebox{height:36px;border:1px solid #dfe4eb;background:#fff;border-radius:5px;display:flex;align-items:center;gap:7px;padding:0 11px;color:#657084;min-width:110px}
+  .inputbox input{border:0;outline:0;width:100%;min-width:150px}
+  .selectbox select{border:0;outline:0;background:transparent;color:#566173;min-width:70px}
+  .filterbar{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--border);border-radius:5px;padding:13px 14px;margin-bottom:14px}
+  .filter-group{display:flex;flex-direction:column;gap:6px}
+  .filter-label{font-size:11px;color:#7d8796}
+
+  /* cards */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+  .stat-card{height:116px;background:#fff;border:1px solid var(--border);border-radius:5px;box-shadow:var(--shadow);padding:20px 22px}
+  .stat-label{color:#596475;font-weight:560;margin-bottom:12px}
+  .stat-value{font-size:25px;line-height:1;font-weight:720;letter-spacing:.3px}
+  .stat-foot{margin-top:14px;color:#8c95a4;display:flex;align-items:center;gap:16px}
+  .up{color:var(--green);font-weight:650}
+  .orange{color:var(--orange)!important}
+  .cards2{display:grid;grid-template-columns:1fr 1.08fr;gap:14px;margin-bottom:14px}
+  .panel{background:#fff;border:1px solid var(--border);border-radius:5px;box-shadow:var(--shadow)}
+  .panel-head{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-weight:650;font-size:15px}
+  .panel-body{padding:4px 18px 16px}
+  .legend{display:flex;align-items:center;gap:20px;color:#7a8492;font-size:12px}
+  .legend i{display:inline-block;width:18px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle;position:relative}
+  .legend i:after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;left:6px;top:-2px;background:inherit}
+  .bottom-grid{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:14px}
+  .list-panel{min-height:190px;padding:16px 18px}
+  .list-head{display:flex;justify-content:space-between;font-weight:650;margin-bottom:13px}
+  .more{color:var(--blue);font-size:12px}
+  .rank-list,.plain-list{margin:0;padding:0;list-style:none}
+  .rank-list li,.plain-list li{display:flex;align-items:center;justify-content:space-between;height:25px;color:#555f6e}
+  .rank-list .name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:12px}
+
+  /* tables */
+  .table-card{background:#fff;border:1px solid var(--border);border-radius:5px;box-shadow:var(--shadow);overflow-x:auto}
+  table{border-collapse:collapse;width:100%;table-layout:fixed}
+  th{height:45px;background:#f1f5fa;color:#566172;font-weight:650;text-align:left;padding:0 14px;border-bottom:1px solid #e4e9ef;font-size:12px}
+  td{height:45px;padding:0 14px;border-bottom:1px solid var(--line);color:#495363;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+  tbody tr:hover{background:#f8fbff}
+  tbody tr.selected{background:#f7fbff;box-shadow:inset 3px 0 var(--blue)}
+  .link{color:var(--blue);font-weight:600;cursor:pointer}
+  .tag{display:inline-flex;align-items:center;height:23px;padding:0 8px;border-radius:4px;font-size:11px;background:#eef4ff;color:#3978d9;margin:2px 4px 2px 0}
+  .tag.green{background:#eaf8f0;color:#26a765}
+  .tag.red{background:#fff0ef;color:#ef5d5d}
+  .tag.purple{background:#f5efff;color:#895bdb}
+  .tag.orange{background:#fff4e9;color:#e48a34}
+  .status{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:4px;font-size:11px}
+  .status.done{background:#eaf8f0;color:#22a262}
+  .status.wait{background:#fff6e8;color:#d9902f}
+  .status.warn{background:#fff0ef;color:#ec5555}
+  .pagination{height:50px;display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:0 14px;background:#fff;color:#6c7684}
+  .page-btn{min-width:30px;height:30px;border:1px solid #e0e5eb;border-radius:4px;background:#fff;color:#687384}
+  .page-btn.active{background:var(--blue);border-color:var(--blue);color:#fff}
+
+  /* charts */
+  .chart{width:100%;display:block}
+  .funnel-wrap{height:214px;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 8px}
+  .funnel-row{display:grid;grid-template-columns:92px 1fr 118px;align-items:center;gap:10px;color:#586273}
+  .funnel-bar-wrap{height:24px;display:flex;justify-content:center}
+  .funnel-bar{height:100%;background:linear-gradient(90deg,#cfe2ff,#a9cafa);border-radius:2px}
+  .svg-chart text{font-size:11px;fill:#717c8c}
+  .gridline{stroke:#e9edf2;stroke-width:1}
+  .axisline{stroke:#dfe4ea;stroke-width:1}
+
+  /* drawers */
+  .drawer{position:fixed;z-index:30;right:0;top:64px;width:34vw;min-width:420px;max-width:540px;height:calc(100vh - 64px);background:#fff;border-left:1px solid var(--border);box-shadow:-10px 0 24px rgba(31,39,51,.05);transform:translateX(102%);transition:.22s ease;display:flex;flex-direction:column}
+  .drawer.open{transform:translateX(0)}
+  .drawer-backdrop{position:fixed;z-index:29;inset:64px 0 0;background:rgba(31,39,51,.16);opacity:0;pointer-events:none;transition:.2s}
+  .drawer-backdrop.open{opacity:1;pointer-events:auto}
+  .drawer-head{height:62px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;font-size:16px;font-weight:700}
+  .drawer-close{border:0;background:transparent;color:#6f7987;font-size:22px}
+  .drawer-body{padding:22px 25px;overflow:auto;flex:1}
+  .detail-section{padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid #eef1f5}
+  .detail-section:last-child{border-bottom:0}
+  .detail-title{font-weight:700;margin-bottom:11px;color:#3e4856}
+  .detail-text{color:#697485;line-height:1.75}
+  .detail-kv{display:grid;grid-template-columns:110px 1fr;gap:10px;margin-bottom:9px;color:#657081}
+  .detail-kv b{color:#444f5f}
+  .textarea{width:100%;min-height:85px;border:1px solid #dfe5ec;border-radius:5px;padding:10px;resize:none;color:#657081}
+  .drawer-foot{padding:14px 24px;border-top:1px solid var(--border);display:flex;justify-content:center}
+  .drawer-foot .primary-btn{width:210px}
+  .danger-btn{height:40px;width:210px;background:#ef4f50;border:0;border-radius:4px;color:#fff;font-weight:650}
+
+  /* components */
+  .component-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:14px}
+  .component-main{min-width:0}
+  .component-rank{display:flex;flex-direction:column;gap:14px}
+  .rank-box{background:#fff;border:1px solid var(--border);border-radius:5px;padding:16px}
+  .rank-box h4{margin:0 0 14px;font-size:13px}
+  .rank-box li{height:29px}
+  .mini-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
+  .mini-stat{height:92px;background:#fff;border:1px solid var(--border);border-radius:5px;padding:17px 18px}
+  .mini-stat .stat-value{font-size:22px;margin-top:10px}
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+
+  /* feedback */
+  .rating{color:#ff9d3b;letter-spacing:1px;font-size:14px}.rating .off{color:#dfe4e9}
+  .score-orange{color:#ff8a34;font-size:22px;font-weight:700}
+  .error-kind{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:4px;font-weight:700;color:#fff}
+  .error-kind.red{background:#ee4c4f}.error-kind.orange{background:#f5a43a}.error-kind.yellow{background:#dbaa3f}
+  .codebox{background:#fbfcfd;border:1px solid #e1e5ea;border-radius:5px;padding:11px;color:#5e6876;line-height:1.6;white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px}
+
+  /* toast */
+  .toast{position:fixed;left:50%;top:84px;transform:translate(-50%,-10px);background:#243041;color:#fff;border-radius:5px;padding:10px 16px;opacity:0;pointer-events:none;transition:.25s;z-index:60;box-shadow:0 8px 25px rgba(0,0,0,.14)}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .empty-state{padding:42px 20px;text-align:center;color:var(--muted)}
+  .empty-state b{display:block;margin-bottom:8px;color:#566172;font-size:15px}
+  .table-card table.wide{min-width:1080px}
+  @media(max-width:1250px){
+    .content.drawer-open{padding-right:26px}.drawer{width:450px}.sidebar{width:190px}
+    .stats-grid,.mini-stats{gap:10px}.stat-card{padding:18px 16px}.component-layout{grid-template-columns:minmax(0,1fr) 230px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- LOGIN -->
+  <section class="login-shell" id="loginView">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M7 3h10l4 5v8l-4 5H7l-4-5V8z"/><circle cx="12" cy="12" r="3"/><path d="M8 3v3M16 3v3M8 18v3M16 18v3"/></svg></span>
+        <span>白砾电子</span>
+      </div>
+      <div class="admin"><span class="avatar"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c.8-4.3 3-6 7-6s6.2 1.7 7 6"/></svg></span></span>管理员</div>
+    </header>
+    <main class="login-main">
+      <div>
+        <div class="login-card">
+          <div class="login-title">管理员登录</div>
+          <div class="login-sub">主题测试活动管理后台</div>
+          <label class="form-control"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c.8-4.3 3-6 7-6s6.2 1.7 7 6"/></svg></span><input id="account" autocomplete="username" placeholder="请输入管理员账号" /></label>
+          <label class="form-control"><span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><input id="password" type="password" autocomplete="current-password" placeholder="请输入密码" /><span class="ico" id="togglePassword"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-5 10-5 10 5 10 5-3.5 5-10 5S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg></span></label>
+          <label class="remember"><input type="checkbox" />记住登录状态</label>
+          <div class="login-error hidden" id="loginError" role="alert"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 17h.01"/></svg></span><span id="loginErrorText"></span></div>
+          <button class="primary-btn login-btn" id="loginBtn">登录</button>
+        </div>
+        <div class="login-note">当前为内部测试环境，仅供项目团队使用</div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ADMIN -->
+  <section class="admin-shell hidden" id="adminView">
+    <header class="topbar">
+      <div class="brand">
+        <span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M7 3h10l4 5v8l-4 5H7l-4-5V8z"/><circle cx="12" cy="12" r="3"/><path d="M8 3v3M16 3v3M8 18v3M16 18v3"/></svg></span>
+        <span>白砾电子</span>
+      </div>
+      <div class="top-actions">
+        <span class="circle-action"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l4 4"/></svg></span></span>
+        <span class="circle-action"><span class="ico"><svg viewBox="0 0 24 24"><path d="M6 18h12M8 18v-7a4 4 0 0 1 8 0v7M10 21h4"/></svg></span></span>
+        <span class="admin"><span class="avatar"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 20c.8-4.3 3-6 7-6s6.2 1.7 7 6"/></svg></span></span>管理员</span>
+        <button class="ghost-btn" id="logoutBtn" type="button">退出</button>
+      </div>
+    </header>
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="nav-item active" data-page="dashboard"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 10l8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z"/></svg></span>数据概览</div>
+        <div class="nav-item" data-page="questions"><span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span>题目库</div>
+        <div class="nav-item" data-page="components"><span class="ico"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>元器件反馈</div>
+        <div class="nav-item" data-page="feedback"><span class="ico"><svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 3z"/><path d="M8 9h8M8 13h5"/></svg></span>用户反馈</div>
+        <div class="nav-item" data-page="errors"><span class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/><circle cx="17" cy="17" r="3"/></svg></span>错误记录</div>
+      </aside>
+      <main class="content" id="mainContent">
+        <!-- DASHBOARD -->
+        <section class="page active" id="page-dashboard">
+          <div class="page-title-row">
+            <div><h1 class="page-title">数据概览</h1><div class="page-sub">统计时间：2025-05-20 ~ 2025-05-26</div></div>
+            <div class="toolbar"><div class="datebox"><span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span>2025-05-20　至　2025-05-26</div><button class="ghost-btn action-toast"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-2.3-5.7"/><path d="M20 4v7h-7"/></svg></span>刷新数据</button></div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-label">今日使用人数</div><div class="stat-value">1,268</div><div class="stat-foot"><span class="up">▲ 12.5%</span><span>较昨日</span></div></div>
+            <div class="stat-card"><div class="stat-label">题目评估次数</div><div class="stat-value">3,842</div><div class="stat-foot"><span class="up">▲ 8.7%</span><span>较昨日</span></div></div>
+            <div class="stat-card"><div class="stat-label">进入细化配置次数</div><div class="stat-value">1,952</div><div class="stat-foot"><span class="up">▲ 6.3%</span><span>较昨日</span></div></div>
+            <div class="stat-card"><div class="stat-label">完成方案生成次数</div><div class="stat-value">1,128</div><div class="stat-foot"><span class="up">▲ 10.2%</span><span>较昨日</span></div></div>
+          </div>
+          <div class="cards2">
+            <div class="panel">
+              <div class="panel-head">评估到方案的使用漏斗</div>
+              <div class="panel-body funnel-wrap">
+                <div class="funnel-row"><span>打开系统</span><span class="funnel-bar-wrap"><i class="funnel-bar" style="width:100%"></i></span><b>6,842（100%）</b></div>
+                <div class="funnel-row"><span>提交题目</span><span class="funnel-bar-wrap"><i class="funnel-bar" style="width:82%"></i></span><b>4,935（72.1%）</b></div>
+                <div class="funnel-row"><span>完成评估</span><span class="funnel-bar-wrap"><i class="funnel-bar" style="width:66%"></i></span><b>3,842（56.2%）</b></div>
+                <div class="funnel-row"><span>配置元器件</span><span class="funnel-bar-wrap"><i class="funnel-bar" style="width:49%"></i></span><b>1,952（28.5%）</b></div>
+                <div class="funnel-row"><span>生成方案</span><span class="funnel-bar-wrap"><i class="funnel-bar" style="width:35%"></i></span><b>1,128（16.5%）</b></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><span>最近 7 天趋势</span><span class="legend"><span><i style="background:#2878ed"></i>评估次数</span><span><i style="background:#31b96c"></i>方案生成次数</span></span></div>
+              <div class="panel-body"><svg class="chart svg-chart" viewBox="0 0 620 220" preserveAspectRatio="none">
+                <line class="gridline" x1="55" y1="20" x2="605" y2="20"/><line class="gridline" x1="55" y1="72" x2="605" y2="72"/><line class="gridline" x1="55" y1="124" x2="605" y2="124"/><line class="gridline" x1="55" y1="176" x2="605" y2="176"/>
+                <text x="8" y="24">4,000</text><text x="8" y="76">3,200</text><text x="8" y="128">1,600</text><text x="27" y="180">0</text>
+                <polyline points="60,87 150,87 240,108 330,60 420,60 510,87 600,87" fill="none" stroke="#2878ed" stroke-width="3"/>
+                <polyline points="60,145 150,145 240,135 330,145 420,143 510,130 600,156" fill="none" stroke="#31b96c" stroke-width="3"/>
+                <g fill="#2878ed"><circle cx="60" cy="87" r="4"/><circle cx="150" cy="87" r="4"/><circle cx="240" cy="108" r="4"/><circle cx="330" cy="60" r="4"/><circle cx="420" cy="60" r="4"/><circle cx="510" cy="87" r="4"/><circle cx="600" cy="87" r="4"/></g>
+                <g fill="#31b96c"><circle cx="60" cy="145" r="4"/><circle cx="150" cy="145" r="4"/><circle cx="240" cy="135" r="4"/><circle cx="330" cy="145" r="4"/><circle cx="420" cy="143" r="4"/><circle cx="510" cy="130" r="4"/><circle cx="600" cy="156" r="4"/></g>
+                <g text-anchor="middle"><text x="60" y="207">05-20</text><text x="150" y="207">05-21</text><text x="240" y="207">05-22</text><text x="330" y="207">05-23</text><text x="420" y="207">05-24</text><text x="510" y="207">05-25</text><text x="600" y="207">05-26</text></g>
+              </svg></div>
+            </div>
+          </div>
+          <div class="bottom-grid">
+            <div class="panel list-panel"><div class="list-head"><span>热门题目搜索词</span><span class="more">查看全部</span></div><ol class="rank-list"><li><span class="name">1　电机控制系统设计</span><span>532</span></li><li><span class="name">2　温湿度监测系统</span><span>418</span></li><li><span class="name">3　智能小车避障系统</span><span>387</span></li><li><span class="name">4　家庭安防报警系统</span><span>321</span></li><li><span class="name">5　使用以太网采集仪</span><span>276</span></li></ol></div>
+            <div class="panel list-panel"><div class="list-head"><span>最近反馈</span><span class="more">查看全部</span></div><ul class="plain-list"><li><span>· AI 推荐的传感器型号不准确</span><span>2025-05-26 14:23</span></li><li><span>· 希望增加对 LoRa 模块的支持</span><span>2025-05-26 11:06</span></li><li><span>· 评估结果硬件不够明确</span><span>2025-05-25 18:36</span></li><li><span>· 生成方案界面加载卡顿</span><span>2025-05-25 00:16</span></li><li><span>· 表格导出功能需要优化</span><span>2025-05-24 20:47</span></li></ul></div>
+            <div class="panel list-panel"><div class="list-head"><span>最近错误请求</span><span class="more">查看全部</span></div><ol class="rank-list"><li><span class="name">1　AI 服务调用超时</span><span>128</span></li><li><span class="name">2　题目评估接口失败</span><span>96</span></li><li><span class="name">3　方案生成后端异常</span><span>862</span></li><li><span class="name">4　元器件目录加载异常</span><span>428</span></li><li><span class="name">5　用户登录鉴权异常</span><span>165</span></li></ol></div>
+          </div>
+        </section>
+
+        <!-- QUESTIONS -->
+        <section class="page" id="page-questions">
+          <div class="page-title-row"><div><h1 class="page-title">题目库</h1><div class="page-sub">题目总数：<span class="orange">1,268</span>　 今日新增：32</div></div><div class="toolbar"><div class="inputbox" style="width:250px"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l4 4"/></svg></span><input placeholder="搜索题目名称或关键词" /></div><button class="ghost-btn action-toast">↻ 导出</button></div></div>
+          <div class="filterbar"><div class="filter-group"><span class="filter-label">时间范围</span><div class="datebox">2025-05-20　至　2025-05-26</div></div><div class="filter-group"><span class="filter-label">评估状态</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">综合评分</span><div style="display:flex;gap:6px"><div class="inputbox" style="min-width:58px">0</div><div class="inputbox" style="min-width:58px">100</div></div></div><div class="filter-group"><span class="filter-label">分析引擎</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">题目领域</span><div class="selectbox"><select><option>全部</option></select></div></div></div>
+          <div class="table-card"><table><thead><tr><th style="width:25%">题目名称</th><th>题目领域</th><th>综合评分</th><th>硬件完成度</th><th>软件完成度</th><th>分析引擎</th><th>评估状态</th><th style="width:145px">创建时间</th><th style="width:60px">操作</th></tr></thead><tbody id="questionRows">
+            <tr class="selected"><td>基于 STM32 的电机控制系统设计</td><td>电机控制</td><td>88.6</td><td>85%</td><td>90%</td><td>双模</td><td><span class="status done">已完成</span></td><td>2025-05-26 14:35</td><td class="link">查看</td></tr>
+            <tr><td>温湿度监测系统设计</td><td>环境监测</td><td>82.4</td><td>80%</td><td>85%</td><td>AI</td><td><span class="status done">已完成</span></td><td>2025-05-26 13:21</td><td class="link">查看</td></tr>
+            <tr><td>智能小车避障系统</td><td>智能硬件</td><td>79.1</td><td>75%</td><td>80%</td><td>规则引擎</td><td><span class="status done">已完成</span></td><td>2025-05-26 11:48</td><td class="link">查看</td></tr>
+            <tr><td>家庭安防报警系统</td><td>智能家居</td><td>75.3</td><td>70%</td><td>78%</td><td>双模</td><td><span class="status done">已完成</span></td><td>2025-05-26 10:05</td><td class="link">查看</td></tr>
+            <tr><td>使用以太网采集仪</td><td>物联网</td><td>71.8</td><td>68%</td><td>75%</td><td>AI</td><td><span class="status done">已完成</span></td><td>2025-05-25 18:22</td><td class="link">查看</td></tr>
+            <tr><td>基于 LoRa 的环境监测节点</td><td>环境监测</td><td>69.4</td><td>65%</td><td>72%</td><td>规则引擎</td><td><span class="status wait">评估中</span></td><td>2025-05-25 17:11</td><td class="link">查看</td></tr>
+            <tr><td>智能门锁设计</td><td>智能家居</td><td>68.2</td><td>60%</td><td>75%</td><td>AI</td><td><span class="status done">已完成</span></td><td>2025-05-25 18:03</td><td class="link">查看</td></tr>
+            <tr><td>无人机飞控系统设计</td><td>电机控制</td><td>66.1</td><td>62%</td><td>70%</td><td>双模</td><td><span class="status wait">评估中</span></td><td>2025-05-25 16:42</td><td class="link">查看</td></tr>
+          </tbody></table><div class="pagination"><span>共 1,268 条</span><button class="page-btn">10条/页</button><button class="page-btn">‹</button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">4</button><button class="page-btn">5</button><span>...</span><button class="page-btn">126</button><button class="page-btn">›</button></div></div>
+        </section>
+
+        <!-- COMPONENTS -->
+        <section class="page" id="page-components">
+          <div class="page-title-row"><div class="toolbar"><h1 class="page-title" style="margin:0 6px 0 0">元器件反馈</h1><div class="datebox">2025-05-20　至　2025-05-26</div><div class="selectbox"><span>题目类型</span><select><option>全部</option></select></div><div class="selectbox"><span>元器件类型</span><select><option>全部</option></select></div></div><button class="ghost-btn action-toast">↻ 导出数据</button></div>
+          <div class="component-layout"><div class="component-main">
+            <div class="mini-stats"><div class="mini-stat"><div class="stat-label">AI 推荐元器件总量</div><div class="stat-value">12,842</div></div><div class="mini-stat"><div class="stat-label">用户采纳率</div><div class="stat-value">68.7%</div></div><div class="mini-stat"><div class="stat-label">用户主动新增次数</div><div class="stat-value">2,153</div></div><div class="mini-stat"><div class="stat-label">用户主动删除次数</div><div class="stat-value">1,845</div></div></div>
+            <div class="chart-row"><div class="panel"><div class="panel-head">推荐后保留率趋势</div><div class="panel-body"><svg class="chart svg-chart" viewBox="0 0 540 220"><line class="gridline" x1="45" y1="25" x2="520" y2="25"/><line class="gridline" x1="45" y1="75" x2="520" y2="75"/><line class="gridline" x1="45" y1="125" x2="520" y2="125"/><line class="gridline" x1="45" y1="175" x2="520" y2="175"/><polyline points="55,90 130,90 205,90 280,70 355,86 430,86 505,84" fill="none" stroke="#2e7cf3" stroke-width="3"/><g fill="#2e7cf3"><circle cx="55" cy="90" r="4"/><circle cx="130" cy="90" r="4"/><circle cx="205" cy="90" r="4"/><circle cx="280" cy="70" r="4"/><circle cx="355" cy="86" r="4"/><circle cx="430" cy="86" r="4"/><circle cx="505" cy="84" r="4"/></g><g text-anchor="middle"><text x="55" y="205">05-20</text><text x="130" y="205">05-21</text><text x="205" y="205">05-22</text><text x="280" y="205">05-23</text><text x="355" y="205">05-24</text><text x="430" y="205">05-25</text><text x="505" y="205">05-26</text></g><text x="5" y="29">100%</text><text x="15" y="79">75%</text><text x="15" y="129">50%</text><text x="15" y="179">0%</text></svg></div></div>
+              <div class="panel"><div class="panel-head"><span>不同器件类型的保留 / 移除 / 新增对比</span><span class="legend"><span><i style="background:#3c83ef"></i>保留率</span><span><i style="background:#ff993f"></i>移除率</span><span><i style="background:#4cc374"></i>新增率</span></span></div><div class="panel-body"><svg class="chart svg-chart" viewBox="0 0 540 220"><line class="gridline" x1="45" y1="35" x2="520" y2="35"/><line class="gridline" x1="45" y1="90" x2="520" y2="90"/><line class="gridline" x1="45" y1="145" x2="520" y2="145"/><line class="axisline" x1="45" y1="185" x2="520" y2="185"/><g><rect x="70" y="72" width="16" height="113" fill="#3c83ef"/><rect x="88" y="145" width="16" height="40" fill="#ff993f"/><rect x="106" y="68" width="16" height="117" fill="#4cc374"/><rect x="124" y="115" width="16" height="70" fill="#ffb25b"/><rect x="192" y="105" width="16" height="80" fill="#3c83ef"/><rect x="210" y="155" width="16" height="30" fill="#ff993f"/><rect x="228" y="80" width="16" height="105" fill="#4cc374"/><rect x="246" y="120" width="16" height="65" fill="#ffb25b"/><rect x="314" y="110" width="16" height="75" fill="#3c83ef"/><rect x="332" y="160" width="16" height="25" fill="#ff993f"/><rect x="350" y="100" width="16" height="85" fill="#4cc374"/><rect x="368" y="146" width="16" height="39" fill="#ffb25b"/><rect x="434" y="112" width="16" height="73" fill="#3c83ef"/><rect x="452" y="155" width="16" height="30" fill="#ff993f"/><rect x="470" y="77" width="16" height="108" fill="#4cc374"/><rect x="488" y="156" width="16" height="29" fill="#ffb25b"/></g><g text-anchor="middle"><text x="105" y="207">基本器件</text><text x="226" y="207">传感器</text><text x="348" y="207">板载</text><text x="469" y="207">执行器设备</text></g></svg></div></div></div>
+            <div class="table-card"><table><thead><tr><th style="width:26%">题目名称</th><th>题目领域</th><th style="width:22%">AI 推荐器件</th><th style="width:22%">用户最终选用</th><th>用户操作</th><th>推荐分类</th><th>推荐来源</th><th style="width:125px">时间</th></tr></thead><tbody><tr><td>基于 STM32 的电机控制系统设计</td><td>电机控制</td><td>L298N、INA180、MP6244N</td><td>DRV8871、INA180、MP6244N</td><td><span class="status wait">保留部分</span></td><td>执行器设备</td><td>AI 推荐</td><td>2025-05-26 14:35</td></tr><tr><td>温湿度监测系统设计</td><td>环境监测</td><td>DHT11、0.96 OLED</td><td>SHT30、0.96 OLED</td><td><span class="status warn">移除替换</span></td><td>传感器</td><td>AI 推荐</td><td>2025-05-26 13:21</td></tr></tbody></table></div>
+          </div><aside class="component-rank"><div class="rank-box"><h4>最常被用户保留的元器件</h4><ol class="rank-list"><li><span>1　INA180 电流检测芯片</span><b>1,245</b></li><li><span>2　MP0060 无线传感器</span><b>1,102</b></li><li><span>3　0.96寸 OLED 显示屏</span><b>967</b></li><li><span>4　AHT20 温湿度</span><b>806</b></li><li><span>5　STM32F103C8T6</span><b>745</b></li></ol><div class="more" style="text-align:right">查看全部</div></div><div class="rank-box"><h4>最常由用户主动添加的元器件</h4><ol class="rank-list"><li><span>1　ESP32-C3 WiFi 模块</span><b>512</b></li><li><span>2　TFT 彩色显示屏</span><b>448</b></li><li><span>3　语音识别模块</span><b>376</b></li><li><span>4　SD 卡模块</span><b>296</b></li><li><span>5　锂电池充电管理芯片</span><b>245</b></li></ol><div class="more" style="text-align:right">查看全部</div></div></aside></div>
+        </section>
+
+        <!-- FEEDBACK -->
+        <section class="page" id="page-feedback">
+          <div class="page-title-row"><h1 class="page-title">用户反馈</h1><button class="ghost-btn action-toast">↻ 导出</button></div>
+          <div class="mini-stats" style="max-width:910px"><div class="mini-stat"><div class="stat-label">反馈总数</div><div class="stat-value">1,245</div></div><div class="mini-stat"><div class="stat-label">平均满意度</div><div class="score-orange">3.6 / 5</div></div><div class="mini-stat"><div class="stat-label">待处理数量</div><div class="stat-value">276</div></div><div class="mini-stat"><div class="stat-label">已处理数量</div><div class="stat-value">969</div></div></div>
+          <div class="filterbar"><div class="filter-group"><span class="filter-label">满意度</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">反馈类型</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">处理状态</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">角色类型</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">用户来源</span><div class="selectbox"><select><option>全部</option></select></div></div><div class="filter-group"><span class="filter-label">时间范围</span><div class="datebox">2025-05-20　至　2025-05-26</div></div><button class="ghost-btn action-toast">搜索</button></div>
+          <div class="table-card"><table><thead><tr><th style="width:90px">满意度</th><th style="width:25%">反馈标题</th><th>反馈类型</th><th style="width:20%">关联题目</th><th>所属用户</th><th>联系方式</th><th>处理状态</th><th style="width:135px">提交时间</th><th style="width:55px">操作</th></tr></thead><tbody id="feedbackRows"><tr><td><span class="rating">★★<span class="off">★★★</span></span></td><td>AI 推荐的传感器型号不准确</td><td><span class="tag purple">硬件不准确</span></td><td>温湿度监测系统设计</td><td>学生用户</td><td>138****1234</td><td><span class="status warn">待处理</span></td><td>2025-05-26 14:20</td><td class="link">查看</td></tr><tr><td><span class="rating">★★★<span class="off">★★</span></span></td><td>希望增加对 LoRa 模块的支持</td><td><span class="tag purple">功能建议</span></td><td>基于 LoRa 的环境监测节点</td><td>普通用户</td><td>未填写</td><td><span class="tag purple">处理中</span></td><td>2025-05-26 11:08</td><td class="link">查看</td></tr><tr><td><span class="rating">★★★<span class="off">★★</span></span></td><td>评估结果硬件不够准确</td><td><span class="tag purple">算法问题</span></td><td>智能小车避障系统</td><td>学生用户</td><td>168****5678</td><td><span class="status warn">待处理</span></td><td>2025-05-25 18:36</td><td class="link">查看</td></tr><tr><td><span class="rating">★★<span class="off">★★★</span></span></td><td>生成方案加载速度较慢</td><td><span class="tag purple">操作问题</span></td><td>电机控制系统设计</td><td>方案生成</td><td>未填写</td><td><span class="status done">已处理</span></td><td>2025-05-25 09:45</td><td class="link">查看</td></tr><tr><td><span class="rating">★★★★<span class="off">★</span></span></td><td>数据导出功能需要优化</td><td><span class="tag purple">功能建议</span></td><td>家庭安防报警系统</td><td>教师用户</td><td>137****4466</td><td><span class="status done">已处理</span></td><td>2025-05-24 20:47</td><td class="link">查看</td></tr></tbody></table><div class="pagination"><span>共 1,245 条</span><button class="page-btn">10条/页</button><button class="page-btn">‹</button><button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">4</button><button class="page-btn">5</button><span>...</span><button class="page-btn">125</button><button class="page-btn">›</button></div></div>
+        </section>
+
+        <!-- ERRORS -->
+        <section class="page" id="page-errors">
+          <div class="page-title-row"><div class="toolbar"><h1 class="page-title" style="margin:0 6px 0 0">错误记录</h1><div class="datebox">2025-05-20　至　2025-05-26</div><div class="selectbox"><span>来源</span><select><option>全部</option></select></div><div class="selectbox"><span>错误类型</span><select><option>全部</option></select></div><div class="selectbox"><span>接口</span><select><option>全部</option></select></div></div><button class="ghost-btn action-toast">↻ 刷新</button></div>
+          <div class="mini-stats"><div class="mini-stat"><div class="stat-label">错误总数</div><div class="stat-value">1,845</div></div><div class="mini-stat"><div class="stat-label">受影响用户数</div><div class="stat-value">582</div></div><div class="mini-stat"><div class="stat-label">API 请求失败率</div><div class="stat-value">3.27%</div></div><div class="mini-stat"><div class="stat-label">未处理错误数量</div><div class="stat-value">312</div></div></div>
+          <div class="chart-row"><div class="panel"><div class="panel-head">最近 7 天错误趋势</div><div class="panel-body"><svg class="chart svg-chart" viewBox="0 0 560 220"><line class="gridline" x1="50" y1="25" x2="540" y2="25"/><line class="gridline" x1="50" y1="75" x2="540" y2="75"/><line class="gridline" x1="50" y1="125" x2="540" y2="125"/><line class="gridline" x1="50" y1="175" x2="540" y2="175"/><polyline points="60,75 140,105 220,90 300,135 380,135 460,90 535,75" fill="none" stroke="#f25252" stroke-width="3"/><g fill="#f25252"><circle cx="60" cy="75" r="4"/><circle cx="140" cy="105" r="4"/><circle cx="220" cy="90" r="4"/><circle cx="300" cy="135" r="4"/><circle cx="380" cy="135" r="4"/><circle cx="460" cy="90" r="4"/><circle cx="535" cy="75" r="4"/></g><g text-anchor="middle"><text x="60" y="205">05-20</text><text x="140" y="205">05-21</text><text x="220" y="205">05-22</text><text x="300" y="205">05-23</text><text x="380" y="205">05-24</text><text x="460" y="205">05-25</text><text x="535" y="205">05-26</text></g></svg></div></div>
+            <div class="panel"><div class="panel-head">错误接口分布</div><div class="panel-body" style="display:flex;align-items:center;justify-content:center;gap:40px;height:240px"><div style="width:180px;height:180px;border-radius:50%;background:conic-gradient(#4a86ef 0 42.3%,#ff812f 42.3% 70.1%,#efb749 70.1% 86.1%,#52bf6f 86.1% 100%);position:relative"><div style="position:absolute;inset:42px;background:#fff;border-radius:50%"></div></div><ul class="plain-list" style="width:210px"><li><span><i style="display:inline-block;width:9px;height:9px;background:#4a86ef;margin-right:8px"></i>题目评估接口</span><b>42.3%</b></li><li><span><i style="display:inline-block;width:9px;height:9px;background:#ff812f;margin-right:8px"></i>方案生成接口</span><b>27.8%</b></li><li><span><i style="display:inline-block;width:9px;height:9px;background:#efb749;margin-right:8px"></i>元器件目录接口</span><b>16.0%</b></li><li><span><i style="display:inline-block;width:9px;height:9px;background:#52bf6f;margin-right:8px"></i>AI 调用接口</span><b>14.3%</b></li></ul></div></div></div>
+          <div class="table-card"><table><thead><tr><th style="width:70px">错误级别</th><th style="width:18%">错误类型</th><th>请求接口</th><th>HTTP 状态码</th><th>分析引擎</th><th style="width:18%">关联题目</th><th>用户/会话标识</th><th style="width:135px">发生时间</th><th>处理状态</th><th style="width:55px">操作</th></tr></thead><tbody id="errorRows"><tr><td><span class="error-kind red">高</span></td><td>AI 服务调用超时</td><td>/api/evaluate</td><td>504</td><td>AI</td><td>基于 STM32 的电机控制系统设计</td><td>user_12345</td><td>2025-05-26 14:35</td><td><span class="tag purple">处理中</span></td><td class="link">查看</td></tr><tr><td><span class="error-kind orange">中</span></td><td>题目评估接口失败</td><td>/api/question/evaluate</td><td>500</td><td>规则引擎</td><td>温湿度监测系统设计</td><td>user_12370</td><td>2025-05-26 13:21</td><td><span class="status done">已解决</span></td><td class="link">查看</td></tr><tr><td><span class="error-kind yellow">低</span></td><td>元器件目录接口异常</td><td>/api/components/list</td><td>503</td><td>-</td><td>智能小车避障系统</td><td>user_34000</td><td>2025-05-26 11:48</td><td><span class="tag purple">待处理</span></td><td class="link">查看</td></tr></tbody></table></div>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <!-- DRAWERS -->
+  <aside class="drawer" id="questionDrawer"><div class="drawer-head"><span>题目详情</span><button class="drawer-close">×</button></div><div class="drawer-body"><div class="detail-section"><div class="detail-title">完整题目</div><div class="detail-text">基于 STM32 的电机控制系统设计，实现直流电机的速度控制、方向控制和保护功能。</div></div><div class="detail-section"><div class="detail-title">评估结果</div><div class="detail-kv"><b>综合评分：</b><span>88.6</span><b>硬件完成度：</b><span>85%</span><b>软件完成度：</b><span>90%</span></div></div><div class="detail-section"><div class="detail-title">风险关键词</div><span class="tag red">过流保护</span><span class="tag red">电机驱动</span><span class="tag red">散热设计</span></div><div class="detail-section"><div class="detail-title">AI 建议</div><div class="detail-text">建议增加电机电流保护电路、优化 PID 参数整定方式，并考虑使用更高精度的电流采样电路。</div></div><div class="detail-section"><div class="detail-title">推荐元器件（AI 推荐）</div><span class="tag">STM32F103C8T6</span><span class="tag">L298N</span><span class="tag">INA180</span><span class="tag">MP6244N</span><span class="more">展开更多 ›</span></div><div class="detail-section"><div class="detail-title">用户最终选择的元器件</div><span class="tag green">STM32F103C8T6</span><span class="tag green">DRV8871</span><span class="tag green">INA180</span><span class="tag green">MP6244N</span><span class="more">展开更多 ›</span></div><div class="detail-section"><div class="detail-title">是否继续生成方案</div><span class="tag green">是</span></div></div><div class="drawer-foot"><button class="primary-btn action-toast">查看完整评估</button></div></aside>
+  <aside class="drawer" id="feedbackDrawer"><div class="drawer-head"><span>反馈详情</span><button class="drawer-close">×</button></div><div class="drawer-body"><div class="detail-section"><div class="detail-title">完整反馈内容</div><div class="detail-text">AI 推荐的温湿度传感器型号不准确，实际项目中测量范围和精度不符合要求，建议优化使用建议。</div></div><div class="detail-section"><div class="detail-title">关联题目</div><div class="detail-text">温湿度监测系统设计</div></div><div class="detail-section"><div class="detail-title">用户当时选择的元器件</div><div class="detail-text">SHT30、0.96 OLED、STM32F103C8T6</div></div><div class="detail-section"><div class="detail-title">用户信息</div><div class="detail-kv"><b>角色类型：</b><span>学生用户</span><b>联系方式：</b><span>138****1234</span></div></div><div class="detail-section"><div class="detail-title">处理状态</div><div class="selectbox" style="width:100%"><select style="width:100%"><option>处理中</option><option>已处理</option></select></div></div><div class="detail-section"><div class="detail-title">管理员备注</div><textarea class="textarea" placeholder="请输入处理备注..."></textarea></div></div><div class="drawer-foot"><button class="primary-btn action-toast">标记为已处理</button></div></aside>
+  <aside class="drawer" id="errorDrawer"><div class="drawer-head"><span>错误详情</span><button class="drawer-close">×</button></div><div class="drawer-body"><div class="detail-section"><div class="detail-title">完整错误信息</div><div class="detail-text">AI 服务调用超时：请求在 30 秒内未返回结果</div></div><div class="detail-section"><div class="detail-title">请求参数摘要</div><div class="codebox">{ question_id: 12345, engine: 'ai', model: 'gpt-4o' }</div></div><div class="detail-section"><div class="detail-title">响应内容摘要</div><div class="detail-text">Timeout after 30000ms</div></div><div class="detail-section"><div class="detail-title">错误堆栈</div><div class="codebox">Traceback (most recent call last):
+ File "api/services/ai_service.py", line 128, in call_ai
+ raise TimeoutError("AI service timeout")
+TimeoutError: AI service timeout</div></div><div class="detail-section"><div class="detail-kv"><b>AI 响应耗时：</b><span>30.135s</span><b>Token 用量：</b><span>1,245</span><b>关联题目：</b><span>基于 STM32 的电机控制系统设计</span><b>是否重复成功：</b><span>否</span></div></div><div class="detail-section"><div class="detail-title">管理员备注</div><textarea class="textarea" placeholder="请输入处理备注..."></textarea></div></div><div class="drawer-foot"><button class="danger-btn action-toast">标记为已解决</button></div></aside>
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="toast" id="toast">操作成功</div>
+</div>
+<script src="/admin.js" defer></script>
+</body>
+</html>

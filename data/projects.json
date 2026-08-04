@@ -1,0 +1,839 @@
+[
+  {
+    "id": 1,
+    "title": "STM32智能晨起唤醒系统",
+    "components": "STM32F103C8T6\n光敏电阻模块(PA0)\nDS1302(PA4/PA5/PA6)\nSSD1306 OLED(PB6/PB7)\nLED(PB8)\nLED2(PA8)\n有源蜂鸣器(PB5)\n继电器(PB9)\n按键x4(PA1/PA2/PA3/PA7)",
+    "features": "读取光敏电阻传感器（光照强度）\n读取DS1302实时时钟（时间/日期）\nOLED页面1展示时间、日期、光照强度\nOLED页面2展示闹钟阈值设置\nKEY1进入/退出设置模式\nKEY2切换设置项\nKEY3当前选中值加\nKEY4当前选中值减\n光照低于阈值自动开灯（LED1/LED2）\n到达闹钟时间蜂鸣器响起\n继电器控制外部设备（窗帘驱动）",
+    "hardware_cost": 24.91,
+    "status": "1",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "title": "STM32独居老人智能监护系统",
+    "components": "STM32F103C8T6\nMAX30102心率血氧(PB6/PB7 I2C)\nMPU6050六轴加速度(PB6/PB7 I2C)\nSSD1306 OLED(PB6/PB7 I2C)\nMQ-2燃气传感器(PA0)\nNEO-6M GPS(PB10/PB11 USART3)\n有源蜂鸣器(PB0)\nESP8266 WiFi(PA9/PA10 USART1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取MAX30102心率、血氧；读取MPU6050三轴加速度；读取MQ-2燃气浓度；读取NEO-6M GPS定位\nOLED页面1展示心率、血氧、燃气浓度、跌倒状态\nOLED页面2展示心率/血氧/燃气/跌倒阈值\nKEY1长按≥3s触发SOS报警\nKEY2切换OLED页面\nKEY3当前选中阈值加\nKEY4当前选中阈值减\n心率/血氧异常时蜂鸣器报警\n燃气超标时蜂鸣器报警\n跌倒检测（加速度突变+静止确认）触发蜂鸣器\nMQTT上传心率/血氧/燃气/跌倒/SOS/GPS/阈值（50ms周期）\nAPP远程消警（指令01）\nAPP远程修改阈值（指令02~05）",
+    "hardware_cost": 68.42,
+    "status": "2",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "title": "智能大棚监控系统",
+    "components": "STM32F103C8T6\n光敏电阻模块(PA0)\nMQ-135气体传感器(PA1)\n电容式土壤湿度传感器(PA2)\nDHT11温湿度(PB0)\nDS18B20土壤温度(PB1)\nOLED SSD1306(PB6/PB7 I2C)\n继电器模块(PB14)\n有源蜂鸣器(PB15)\n按键x4(PB10/PB11/PB12/PB13)",
+    "features": "读取光敏电阻（光照强度）；读取MQ-135（气体浓度）；读取土壤湿度传感器；读取DHT11（温湿度）；读取DS18B20（土壤温度）\nOLED页面1展示温度、湿度、土壤湿度、光照、气体浓度\nOLED页面2展示各阈值设置\nKEY1增加当前阈值\nKEY2减少当前阈值\nKEY3手动启动/停止水泵（继电器）\nKEY4切换当前选中阈值\n土壤湿度低于阈值自动启动水泵（继电器）\n气体浓度超标蜂鸣器报警",
+    "hardware_cost": 39.45,
+    "status": "3",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "title": "智能电动窗帘控制系统",
+    "components": "STM32F103C8T6\nDHT11温湿度(PA8)\nLD3320语音识别(PA2/PA3 UART2)\n28BYJ-48步进电机+ULN2003(PB8/PB9/PB10/PB11)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB12)\nESP8266 WiFi(PA9/PA10 USART1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度传感器\nOLED页面1展示温度、湿度、窗帘状态\nOLED页面2展示开窗/关窗温度阈值\nKEY1切换OLED页面\nKEY2页面1开窗/页面2阈值+1\nKEY3页面1关窗/页面2阈值-1\nKEY4页面1停止电机/页面2切换选中阈值项\n语音指令控制窗帘（打开/关闭/停止）\n温度≥开窗阈值自动全开窗帘\n温度≤关窗阈值自动全关窗帘\n高温且窗帘未全开时蜂鸣器报警\nMQTT上传温度/湿度/窗帘位置/阈值（50ms周期）\nAPP远程控制窗帘开/关/停（指令01~03）\nAPP远程修改阈值（指令04~05）",
+    "hardware_cost": 56.21,
+    "status": "4",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "title": "智能垃圾分类投放系统",
+    "components": "STM32F103C8T6\n舵机x4(PA0/PA1/PA2/PA3 PWM)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB14)\n语音识别模块(PB10/PB11 USART3)\n按键x4(PB0/PB1/PB12/PB13)",
+    "features": "读取语音识别模块垃圾分类指令\nOLED展示当前选中垃圾桶及开盖状态\nKEY1轮询切换垃圾桶（可回收/厨余/有害/其他）\nKEY2开盖（当前选中桶舵机转开）\nKEY3关盖（当前选中桶舵机转关）\nKEY4全部关盖\n语音识别自动识别垃圾类别并开对应桶盖\n开盖后计时自动关盖\n蜂鸣器提示开关盖动作",
+    "hardware_cost": 39.71,
+    "status": "5",
+    "notes": ""
+  },
+  {
+    "id": 6,
+    "title": "智能消防安全监测系统",
+    "components": "STM32F103C8T6\n火焰传感器AO(PA0)\nMQ-2烟雾传感器AO(PA1)\nMQ-5可燃气体传感器AO(PA2)\nDHT11温湿度(PA3)\nHC-SR501人体红外(PA4)\nSSD1306 OLED(PB6/PB7 I2C)\nLED1模拟灭火(PA8)\nLED2模拟通风(PB15)\nLED3模拟布防(PB14)\n有源蜂鸣器(PB13)\n继电器(PB12)\n按键x4(PB0/PB1/PB10/PB11)",
+    "features": "读取火焰传感器（PA0）；读取MQ-2烟雾（PA1）；读取MQ-5可燃气体（PA2）；读取DHT11温湿度（PA3）；读取HC-SR501人体红外（PA4）\nOLED页面1展示火焰值、烟雾值、气体值、温湿度、人体检测状态\nOLED页面2展示各传感器阈值\nKEY1阈值加\nKEY2阈值减\nKEY3手动继电器切换\nKEY4布防/撤防切换\n火焰/烟雾/气体超标时LED1（模拟灭火）亮起+蜂鸣器报警\n气体超标时LED2（模拟通风）亮起\n布防状态下有人体触发LED3亮起+蜂鸣器报警\n继电器手动/自动控制",
+    "hardware_cost": 48.5,
+    "status": "6",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "title": "婴幼儿智能监护系统",
+    "components": "STM32F103C8T6(主控)\nDHT11(PA8)\n声音传感器AO(PA0)\nESP8266 ESP-01S(PA9/PA10)\nULN2003步进电机驱动(PB8-PB11)\n28BYJ-48步进电机(PB8-PB11)\nDFPlayer Mini MP3模块(PB12/PB13)\nMicroSD卡\n扬声器8Ω\nOLED SSD1306 0.96寸(PB6/PB7)\n蜂鸣器有源(PB0)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、声音传感器分贝值\n温度超阈值蜂鸣器报警\n湿度超阈值蜂鸣器报警（尿湿检测）\n高分贝持续超时判定哭闹，蜂鸣器报警，哭闹次数+1\n哭闹触发步进电机启动（模拟摇床）\n哭闹触发DFPlayer播放音乐\n联动运行超时自动停止电机和音乐\nKEY1切换OLED页面/循环选中阈值项\nKEY2当前阈值项+1\nKEY3当前阈值项-1\nKEY4手动停止/启动电机和音乐\nOLED页面1显示温湿度/分贝/哭闹次数/运行状态\nOLED页面2显示并调节各项阈值\nAPP展示温湿度/分贝/哭闹次数/设备状态\nAPP报警推送（温湿度/哭闹）\nAPP远程启停电机和音乐\nAPP远程修改阈值\nAPP消警",
+    "hardware_cost": 78.21,
+    "status": "7",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "title": "教师桌面助手系统",
+    "components": "ESP32-S3开发板(1)\nDHT11(GPIO4)\n光敏电阻模块(GPIO1)\nOLED SSD1306(GPIO8/9 I2C)\nLED(GPIO15)\n有源蜂鸣器(GPIO16)\n按键x4(GPIO11/12/13/14)",
+    "features": "读取DHT11温湿度、光敏电阻光照强度\n温度超阈值蜂鸣器响+LED亮报警\n湿度超阈值蜂鸣器响+LED亮报警\n光照低于阈值LED亮护眼提醒\nOLED页面1显示温湿度/光照/NTP时间/下节课信息\nOLED页面2显示并调节三项阈值\nKEY1切换OLED页面\nKEY2切换选中阈值项\nKEY3选中项阈值+1\nKEY4选中项阈值-1\nWiFi连接MQTT上传传感器数据\n接收客户端消警指令关闭蜂鸣器\n接收客户端阈值修改指令并同步OLED\n接收客户端下发下节课信息并显示在OLED\n【客户端】实时显示温湿度/光照数值\n【客户端】温度超阈值弹窗报警\n【客户端】湿度超阈值弹窗报警\n【客户端】光照低于阈值弹窗提醒\n【客户端】远程消警\n【客户端】远程修改温度/湿度/光照阈值\n【客户端】课程表录入与编辑 日程功能\n【客户端】上课前弹窗提醒\n【客户端】自动下发下节课信息到OLED\n【客户端】文字输入AI日程问答（结合课程表）\n【客户端】天气查询显示",
+    "hardware_cost": 34.41,
+    "status": "8",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "title": "家居物联网监控系统",
+    "components": "ESP32-S3开发板(1)\nDHT11(GPIO4)\n光敏电阻模块(GPIO1)\nHC-SR501(GPIO5)\n继电器(GPIO15)\n继电器(GPIO16)\n28BYJ-48+ULN2003(GPIO17/18/21/39)\nOLED SSD1306(GPIO8/9 I2C)\n有源蜂鸣器(GPIO38)\n按键x4(GPIO11/12/13/14)",
+    "features": "读取DHT11温湿度、光敏电阻光照值、HC-SR501人体感应\n光照低于阈值且有人时自动开灯（继电器1），否则关灯\n温度超过阈值时自动开启空调（继电器2），低于阈值关闭\n光照低于阈值时步进电机开窗帘，光照恢复时关窗帘\n无人持续30秒蜂鸣器报警提示\nKEY1切换OLED页面（页面1实时数据/页面2阈值设置）\nKEY2切换选中阈值项（光照阈值/温度阈值）\nKEY3选中阈值+1，KEY4选中阈值-1\nMQTT上报传感器数据及设备状态\nAPP主页面实时显示温湿度、光照值、人体感应、设备状态\nAPP控制面板远程开/关灯/空调/窗帘、消警\nAPP阈值设置页数字输入框修改光照阈值/温度阈值并下发\nAPP端报警：无人30秒提醒、温度过高空调未开提醒、光照不足灯未开提醒",
+    "hardware_cost": 47.4,
+    "status": "9",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "title": "多参数智能空气净化系统",
+    "components": "STM32F103C8T6最小系统板\nGP2Y1014AU0F PM2.5粉尘传感器(PA2/PA3 USART2)\nMQ-135有害气体/CO2传感器(PA1)\nDHT11温湿度传感器(PA8)\nSSD1306 OLED 0.96寸IIC(PB6/PB7)\n直流风扇(PA6 TIM3_CH1 PWM)\n直流风扇(PA7 TIM3_CH2 PWM)\n超声波雾化片模块-加湿器(PB10)\nUV紫外线杀菌模块(PB11)\n有源蜂鸣器模块(PB12)\n独立按键x4(PA15/PB3/PB4/PB5)\nESP8266 ESP-01S WiFi模块(PA9/PA10)",
+    "features": "读GP2Y1014AU0F PM2.5浓度、MQ-135有害气体/CO2浓度、DHT11温湿度\nOLED页靶1展示模式、PM2.5、气体、温湿度、风扇和执行机构状态\nOLED页靶2展示普通/宠物模式PM2.5/气体阈值\nKEY1短按切换OLED页面/长按2s切换普通/宠物模式\nKEY2页靶1切换风扱1开关/页靶2当前阈值+1\nKEY3页靶2当前阈值-1\nKEY4页靶2切换选中阈值项（PM2.5/气体）\n普通模式：PM2.5或气体超阈值自动开风扱1+蜂鸣器报警\n宠物模式：切换后自动开风扱2（毛发吸附），超阈值自动开风扱1\n初则相同，使用宠物阈值判断\n加湿器手动控制（APP或按键）\n紫外线杀菌手动控制（APP或按键）\nMQTT上传PM2.5/气体/温湿度/模式/风扇状态/加湿震/紫外线/双模式阈值（50ms周期）\nAPP远程切换普通/宠物模式（指令01/02）\nAPP远程控制风扱1开关（指令03/04）\nAPP远程控制风扱2开关（指令05/06）\nAPP远程控制加湿器/紫外线（指令07~10）\nAPP远程修改普通/宠物模式阈值（指令11~14）\nAPP定时控制（APP端定时，到时下发指令）\nAPP实时展示PM2.5、气体、温湿度、历史走势图\nAPP展示空气质量等级（优/良/差）、当前模式\nAPP超标报警（到达阈值推送通知）",
+    "hardware_cost": 67.22,
+    "status": "10",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "title": "畜禽舍环境监控系统",
+    "components": "STM32F103C8T6\nDHT11(PC13)\nMQ-135(PA0)\n光敏电阻模块(PA1)\nJW01-CO2(PA2/PA3 UART2)\nATK-MW193(PA9/PA10 UART1)\nOLED SSD1306(PB6/PB7 I2C)\nLED×2(PB11/PB10)\n直流风扇(PB1)\n有源蜂鸣器(PB0)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、MQ-135氨气、光敏电阻光照、JW01-CO2传感器\n光照低于阈值时点亮LED补光灯\n温度低于15摄氏度时点亮LED保温灯\n氨气超标或湿度超标时启动PWM排气扇\n任意参数超标时蜂鸣器本地报警\nOLED页面1实时显示温湿度/氨气/CO2/光照/设备状态/网络状态\nOLED页面2显示阈值设置，KEY1切换页面，KEY2/KEY3调节阈值\n4G上传传感器数据及阈值至MQTT服务器\nAPP主页面实时监控温湿度/氨气/CO2/光照数据\nAPP端报警判断并显示超标提示",
+    "hardware_cost": 44.73,
+    "status": "11",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "title": "农业用水质量监测系统",
+    "components": "STM32F103C8T6最小系统板\nDS18B20(PA8)\npH传感器模块(PA0)\nTDS传感器模块(PA1)\n浑浊度传感器模块(PA2)\nOLED 0.96寸 IIC SSD1306(PB6/PB7)\n独立按键(PA15/PB3/PB4/PB5)\n有源蜂鸣器模块(PB0)\nESP8266",
+    "features": "读取温度/pH/TDS/浑浊度传感器\nOLED页面1实时显示温度、pH、TDS、浑浊度\nOLED页面2显示并调节各项阈值\nKEY1切换OLED显示页面\nKEY2页面2中切换选中阈值项\nKEY3当前阈值项加1\nKEY4当前阈值项减1\n超限蜂鸣器报警（任意项超阈值触发）\nESP8266 MQTT上传传感器数据及阈值\nAPP主页面实时监控温度/pH/TDS/浑浊度\nAPP报警判断（对比阈值，超限提示）\nAPP控制面板远程消警\nAPP阈值设置页远程修改各项阈值",
+    "hardware_cost": 129.79,
+    "status": "12",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "title": "智慧农业温室环境监测与控制系统",
+    "components": "STM32F103C8T6(1)\nDS18B20(PA8)\n土壤湿度传感器(PA0)\n光敏电阻模块(PA1)\nMQ135(PA2)\n4路继电器(PB8/PB9/PB10/PB11)\nOLED SSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PB12)\n按键x4(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10 UART1)",
+    "features": "读取DS18B20温度、土壤湿度(ADC)、光照强度(ADC)、CO2浓度(ADC)\n温度过低自动开启加热棒（继电器1）\n土壤湿度过低自动开启水泵（继电器2）\n光照过强自动开启遮光帘（继电器3）\n温度过高自动开启风扇（继电器4）\nOLED页面1实时显示四路环境数据\nOLED页面2显示四路阈值，当前选中项高亮\nKEY1切换OLED页面\nKEY2循环选择待修改阈值项\nKEY3当前阈值加一\nKEY4当前阈值减一\n蜂鸣器超阈值报警\nAPP主页面实时监控四路传感器数据\nAPP控制面板远程控制四路继电器\nAPP阈值设置页远程下发阈值修改指令\nAPP端报警判断与推送",
+    "hardware_cost": 43.75,
+    "status": "13",
+    "notes": ""
+  },
+  {
+    "id": 14,
+    "title": "定时光控步进系统",
+    "components": "STM32F103C8T6(1)\nDS1302(PA4/PA5/PA6)\n光敏传感器模块(PA0)\n水滴传感器模块(PA1)\n红外传感器模块(PA7)\n28BYJ-48+ULN2003(PB1/PB0/PB10/PB11)\nOLED(PB6/PB7 I2C)\n有源蜂鸣器(PB12)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取光敏传感器(ADC)、水滴传感器(ADC)、DS1302时钟、红外传感器\nOLED页面1显示时间/日期/光照/水滴/红外状态\nOLED页面2显示光照阈值/水滴阈值/定时时刻\n光照低于阈值时触发步进电机动作\n水滴超过阈值时触发步进电机动作并蜂鸣报警\n红外检测到物体时触发蜂鸣器报警\nDS1302定时到达设定时刻时触发步进电机动作\nKEY1切换OLED页面\nKEY2增加当前阈值\nKEY3减少当前阈值\nKEY4手动触发步进电机正转/反转",
+    "hardware_cost": 29.39,
+    "status": "14",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "title": "多参数功耗监测系统",
+    "components": "STM32F103C8T6(主控)\nBH1750(PB6/PB7 I2C1)\nINA226(PB6/PB7 I2C1)\nSSD1306(PB10/PB11 I2C2)\n按键KEY1(PB12)\n按键KEY2(PB13)\nUSART1(PA9/PA10+DMA)\nUSART2(PA2/PA3+DMA)",
+    "features": "读取BH1750光照、INA226电压/电流/功率传感器\nOLED页面1显示光照/电压/电流/功率\nOLED页面2显示当前采样模式\nKEY1切换BH1750高精度模式(0.5lx/120ms)\nKEY2切换BH1750低精度模式(4lx/16ms)\n串口连续上报数据帧(电压,电流,功率,光照)\n串口命令触发单次上报\nDMA+环形缓冲区接收串口指令\n时间片调度器管理所有任务",
+    "hardware_cost": 18.02,
+    "status": "15",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "title": "水质监测系统",
+    "components": "STM32F103C8T6(1)\nTSD-10浊度传感器(PA0)\npH传感器模块(PA1)\nDS18B20(PA8)\nATGM336H GPS(PA2/PA3 UART2)\nESP8266(PA9/PA10 UART1)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB8)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DS18B20水温、TSD-10浊度(NTU)、pH传感器值\nOLED页面1实时显示水温/浊度/pH\nOLED页面2显示各报警阈值\nKEY1切换OLED页面\nKEY2页面2中切换阈值选项（水温/浊度/pH）\nKEY3当前阈值+1\nKEY4当前阈值-1\n水温/浊度/pH任一超阈值时蜂鸣器报警\nGPS读取经纬度，无信号填0.0000\nESP8266上传传感器数值+GPS+阈值至MQTT\nAPP主页面实时监控水温/浊度/pH/GPS\nAPP控制面板远程消警\nAPP阈值设置页远程修改水温/浊度/pH阈值\nAPP端报警判断（超阈值显示报警）",
+    "hardware_cost": 91.29,
+    "status": "16",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "title": "计算机实验室安全监测系统",
+    "components": "STM32F103C8T6\nMQ-2(PA0)\nACS712(PA1)\nHC-SR501(PA4)\nDHT11(PA8)\nSSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PB9)\nLED(PB0)\nLED(PB1)\nLED(PB8)\n继电器(PB10)\n继电器(PB11)\n继电器(PB12)\nESP8266(PA9/PA10 USART1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、MQ-2烟雾浓度(ADC)、HC-SR501人体感应、ACS712电流值(ADC)\nOLED页面1展示温度、湿度、烟雾浓度、电流值、人体感应状态\nOLED页面2展示烟雾/温度/电流阈值\nKEY1切换OLED页面\nKEY2页面2中循环切换选定阈值项\nKEY3当前阈值+1\nKEY4当前阈值-1\n烟雾超阈值触发蜂鸣器报警+LED1+继电器1（通风）\n温度超阈值触发蜂鸣器报警+LED2+继电器2（断电）\n电流超阈值触发蜂鸣器报警+LED3+继电器3（断电保护）\nHC-SR501检测到有人触发蜂鸣器报警\nMQTT上传温湿度/烟雾/电流/人体感应/各阈值(50ms周期)\nAPP主页面实时监控温湿度/烟雾/电流/人体感应状态\nAPP报警判断（对比阈值，超标高亮提示）\nAPP控制面板远程消警及三路继电器控制\nAPP阈值设置页远程修改烟雾/温度/电流阈值",
+    "hardware_cost": 48.05,
+    "status": "17",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "title": "智能外卖柜控制系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA0)\nHC-SR04(PA1/PA2)\nHX711(PA3/PA4)\nESP8266(PA9/PA10)\n继电器(PB8)\nSSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PB9)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、HC-SR04距离、HX711重量传感器\n温湿度超阈值蜂鸣器报警\n超声波判断柜内有货/无货状态\n重量超阈值蜂鸣器报警\n按键KEY1触发继电器开锁，超时自动上锁\n柜门超时未关蜂鸣器间歇报警\n开锁成功蜂鸣器短响提示\nOLED页面1显示温湿度/距离/重量/柜门状态\nOLED页面2显示并调节温度/湿度/重量阈值\nKEY2切换OLED页面，KEY3/KEY4调节阈值\nESP8266 MQTT上报传感器数据与阈值\nAPP主页面实时监控温湿度/距离/重量/柜门状态\nAPP控制面板远程开锁与消警\nAPP阈值设置页远程修改温度/湿度/重量阈值\nAPP端报警判断（温度/湿度/重量超标）",
+    "hardware_cost": 49.9,
+    "status": "18",
+    "notes": ""
+  },
+  {
+    "id": 19,
+    "title": "智能药箱管理系统",
+    "components": "STM32F103C8T6(1)\nSSD1306(PB6/PB7 I2C)\nDHT11(PA0)\nHC-SR501(PA1)\nBH1750(PB6/PB7 I2C)\nDS1302(PA2/PA3/PA4)\nSG90舵机(PA5)\n有源蜂鸣器(PA6)\n继电器×2(PA7/PB0)\nESP8266(PA9/PA10 UART)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、HC-SR501红外、BH1750光强、DS1302实时时钟\nOLED页面1显示当前时间、4组服药状态、光强、温湿度、锁状态及继电器状态\nOLED页面2显示4组服药时间阈值、温度上下限、湿度上下限、光强阈值\n定时吃药提醒：到达设定时间蜂鸣器鸣叫+OLED闪烁，按任意键确认并标记已吃\n红外感应自动解锁：检测到人SG90解锁，持续3秒无人SG90上锁\n光强智能防护：光强>阈值继电器1闭合（遮光帘），降至阈值以下断开\n温度自动控制：温度>上限继电器1启动降温，降至下限关闭\n湿度自动控制：湿度>上限继电器2启动除湿，降至下限关闭\nKEY1切换OLED页面\nKEY2消警（吃药时间到时确认）\nKEY3阈值设置+1\nKEY4阈值设置-1\nAPP主页实时显示时间、4组服药状态、温湿度、光强、锁状态\nAPP控制面板远程解锁/上锁、消警、继电器手动控制\nAPP阈值设置页修改4组服药时间、温度范围、湿度范围、光强阈值\nAPP端报警判断（温度/湿度超限、硬件离线）\nAPP吃药时间到时弹窗提醒",
+    "hardware_cost": 31.81,
+    "status": "19",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "title": "智能垃圾桶系统",
+    "components": "STM32F103C8T6\nHC-SR04(PA6/PA7)\nMQ-2(PA0)\n火焰传感器(PA1)\n红外传感器(PA8)\nSG90舵机(PB8)\nLED(PB9)\n有源蜂鸣器(PB10)\nESP8266(USART1)\nSSD1306 OLED(I2C)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取HC-SR04靠近距离、MQ-2气体浓度、火焰传感器数值、红外溢满状态\n手靠近50cm内自动开盖，延时5秒自动关盖\n垃圾溢满（红外遮挡）OLED提示并LED亮灯\n气体浓度超阈值蜂鸣器报警\n检测到火焰蜂鸣器持续报警\nKEY1切换OLED页面，KEY2加阈值，KEY3减阈值，KEY4手动开/关盖\nOLED页面1展示实时传感器数据，页面2展示阈值设置\nMQTT每50ms上传传感器数据和阈值\n收到下行指令执行消警/修改阈值/远程开关盖\nAPP主页面实时显示靠近距离/气体浓度/火焰值/溢满状态\nAPP控制面板远程开盖/关盖/消警\nAPP阈值设置页远程修改气体/火焰/开盖距离阈值\nAPP端报警判断（气体超标/火焰报警/垃圾溢满推送提示）",
+    "hardware_cost": 42.47,
+    "status": "20",
+    "notes": ""
+  },
+  {
+    "id": 21,
+    "title": "易燃物品智能安全检测系统",
+    "components": "STM32F103C8T6(1)\nMQ-2(PA0)\n火焰传感器(PA1)\nDS18B20(PA8)\nESP8266(PA9/PA10)\nSSD1306 OLED(PB6/PB7)\n有源蝇鸣器(PB8)\nLED(PB9)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取MQ-2烟雾传感器(ADC)、DS18B20温度传感器、火焰传感器(ADC)\n页靲1展示烟雾值、温度值、火焰值、报警状态\n页靲2展示烟雾/温度/火焰阀值（可调）\nKEY1切换OLED页靲1/页靲2\nKEY2选择调节阀值项（烟雾→温度→火焰）\nKEY3所选阀值+1\nKEY4所选阀值-1\n烟雾/温度/火焰任一超阀值触发蝇鸣器+LED报警\n远程消警（蝇鸣器关、LED灯）\nAPP主页面实时监控烟雾、温度、火焰、报警状态\nAPP控制面板远程消警\nAPP阀值设置页远程修改三项阀值\nAPP端报警判断（JS端对照阀值）",
+    "hardware_cost": 38.45,
+    "status": "21",
+    "notes": ""
+  },
+  {
+    "id": 22,
+    "title": "豆芽生长箱智能控制系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA8)\n土壤湿度传感器(PA0)\n光敏电阻模块(PA1)\nMQ-2(PA2)\nOLED SSD1306(PB6/PB7 I2C)\n继电器(PB8)\n继电器(PB9)\n继电器(PB10)\n继电器(PB11)\n有源蜂鸣器(PB12)\nLED(PB13)\nESP8266(PA9/PA10 UART1)\n独立按键x4(PA15/PB3/PB4/PB5)\n直流风扇(2)\n微型水泵(1)\n加热片(1)",
+    "features": "读取DHT11温湿度、土壤湿度传感器(AO)、光敏电阻(AO)、MQ-2气体浓度(AO)\n温度低于下限阈值时继电器驱动加热片加热\n温度高于上限阈值时继电器驱动散热风扇降温\n温度超出18-25℃范围时蜂鸣器+LED声光报警\n气体浓度超过阈值时蜂鸣器+LED声光报警\n基质湿度低于阈值时继电器驱动水泵自动补水（可设浇水时长）\n定时通风：每隔通风周期继电器驱动通风风扇运行通风时长（可调）\nOLED页面1：实时显示温湿度/基质湿度/光照状态/气体浓度/执行器状态\nOLED页面2：显示温度上下限/基质湿度阈值/浇水时长/通风参数/气体阈值\nKEY1切换OLED页面，KEY2选择调节项，KEY3加值，KEY4减值\nESP8266 WiFi上传传感器数据至MQTT\nAPP主页面实时监控温湿度/基质湿度/光照/气体浓度/执行器状态\nAPP控制面板远程消警\nAPP阈值设置页远程修改温度阈值/基质湿度阈值/浇水时长/通风参数/气体阈值\nAPP端报警判断（温度超限/气体超标高亮提示）",
+    "hardware_cost": 56.72,
+    "status": "22",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "title": "智能鸡舍环境监控与自动控制系统",
+    "components": "ESP32开发板\nFC-28土壤湿度模块(GPIO3 ADC)\nDHT11温湿度传感器(GPIO4)\nHC-SR04超声波传感器(GPIO9/GPIO10)\nBH1750光照传感器(I2C GPIO2/GPIO16 0x23)\nENS160 CO2传感器(I2C GPIO2/GPIO16 0x5A)\nSSD1306 OLED(I2C GPIO6/GPIO7 0x3C)\n水泵x2(GPIO21/GPIO40)\n有源蜂鸣器(GPIO38)\n按键x4(GPIO41/42/15/16)",
+    "features": "土壤湿度/温湿度/光照/CO2/雨水箱储水量监测\n土壤湿度低自动启动水泵1\n光照不足自动启动水泵2(灌溉/补光)\nOLED显示实时数据\n按键调节阈值\nMQTT上报数据\nAPP远程控制",
+    "hardware_cost": 52,
+    "status": "23",
+    "notes": ""
+  },
+  {
+    "id": 24,
+    "title": "智能安全帽跌倒检测系统",
+    "components": "STM32F103C8T6\nDHT11温湿度传感器(PA8/PB0)\n土壤湿度传感器模拟AO(PA0 ADC)\nINA226电源管理(I2C1 PB6/PB7 0x40)\nSSD1306 OLED(I2C1 PB6/PB7)\n直流小水泵+继电器(PB8)\n有源蜂鸣器(PB9)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "土壤湿度低于阈值自动浇水\n温湿度监测\nINA226监测电压电流\nOLED双页面显示(实时数据/阈值设置)\n按键调节阈值\n蜂鸣器报警\nSTANDBY低功耗模式\n无上位机",
+    "hardware_cost": 38,
+    "status": "24",
+    "notes": ""
+  },
+  {
+    "id": 25,
+    "title": "智慧雨水利用系统",
+    "components": "STM32F103C8T6\n编码器(PA6/PA7 TIM编码器模式)\nL298N电机驱动(PA8/PA9/PB8/PB9)\n直流电机\nLCD1602(I2C PB6/PB7 0x27)\n按键x4(PA15/PB3/PB4/PB5)\nLEDx2(PA11/PA12)\n有源蜂鸣器(PA13)",
+    "features": "编码器测速\nPID算法实时调速\nLCD1602显示转速/目标速度/PID参数/运行状态\n按键调节目标转速/PID参数\nLED状态指示\n蜂鸣器报警\n单机独立运行无上位机",
+    "hardware_cost": 32,
+    "status": "25",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "title": "自动浇水系统",
+    "components": "纯软件系统(Python Windows客户端)\n摄像头(PC内置或USB外接)\n依赖: face-recognition/opencv-python/tkinter/sqlite3",
+    "features": "实时人脸识别(face_recognition+dlib CNN)\n人员权限管理\n访问记录存储(SQLite)\nGUI界面(tkinter)\n管理员端人员注册管理\n访问记录查询导出",
+    "hardware_cost": 0,
+    "status": "26",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "title": "基于机器视觉的智能门禁管理系统",
+    "components": "STM32F103C8T6\nDS1302实时时钟(PA4/PA5/PA6)\nSSD1306 OLED(I2C PB6/PB7)\n红外传感器(PA0 ADC)\n有源蜂鸣器(PB11)\nLED指示灯(PC13)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "DS1302实时时钟计时\n4个用药计划设定(时间+剂量)\n提前10分钟低频提醒\n到时高频报警\n红外检测药盒开启判断已服/漏服/误服\n30天历史记录存储(Flash Ring Buffer)\nOLED双页面显示(实时状态/历史记录)\n长按KEY1进菜单配置计划\n无联网需求",
+    "hardware_cost": 18,
+    "status": "27",
+    "notes": ""
+  },
+  {
+    "id": 28,
+    "title": "智能药盒提醒系统",
+    "components": "STM32F103C8T6(Proteus仿真)\nTB6612FNG电机驱动(PB10/PB11/PA8 PWM)\n直流电机DC Motor(3-6V)\n光电编码器13PPR(PA0/PA1 TIM2编码器模式)\nSSD1306 OLED(I2C PB6/PB7)\n按键x4(PA15/PB3/PB4/PB5)\nUART调试(PA9/PA10)",
+    "features": "编码器测速(TIM2编码器模式,13PPR,50ms周期计算rpm)\nPID算法(增量式/位置式可切换)\nPWM调速(1kHz频率)\nOLED双页面(实时转速+目标/PID参数)\n按键调节目标转速/KP/KI/KD\nProteus仿真项目",
+    "hardware_cost": 55.91,
+    "status": "28",
+    "notes": ""
+  },
+  {
+    "id": 29,
+    "title": "智能药箱管理系统",
+    "components": "STM32F103C8T6\nDS18B20温度传感器(PA0 单总线)\nMAX30100心率血氧传感器(I2C PB6/PB7 0xAE)\nMPU6050六轴运动传感器(I2C PB6/PB7 0x68)\nGPS模块(PA2/PA3 UART2)\nESP8266 WiFi模块(PA9/PA10 UART1)\nHC-05蓝牙模块(PB8/PB9 软UART)\nSSD1306 OLED(I2C PB6/PB7 0x78)\n有源蜂鸣器(PB11)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "DS18B20体温采集\nMAX30100心率血氧监测\nMPU6050跌倒检测\nGPS室外定位\nHC-05蓝牙室内定位\n体温/心率/血氧超阈值蜂鸣器报警\n长按KEY1 SOS求救\nOLED双页面(监测数据/阈值设置)\n机智云官方App联网\n远程阈值调节/消警",
+    "hardware_cost": 95,
+    "status": "29",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "title": "智能路灯系统",
+    "components": "STM32F103C8T6\nMQ-135气体传感器(PA0 ADC)\nDHT11温湿度传感器(PA1)\nESP8266 WiFi模块(PA9/PA10 UART1)\nBH1750光照传感器(I2C PB6/PB7)\nSSD1306 OLED(I2C PB6/PB7)\n继电器x3(PB8/PB9/PB10)\n有源蜂鸣器(PB12)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "MQ-135气体浓度监测\nDHT11温湿度监测\nBH1750光照监测\n温度超阈值自动开风扇(继电器1)\n光照不足自动开补光(继电器2)\n定时投喂(继电器3)\n超阈值蜂鸣器报警\nOLED双页面\nESP8266+MQTT上报\nAPP远程控制",
+    "hardware_cost": 46,
+    "status": "30",
+    "notes": ""
+  },
+  {
+    "id": 31,
+    "title": "老人健康监护系统",
+    "components": "STM32F103C8T6\nMAX30102心率血氧(PB6/PB7 I2C 0x57)\nMPU6050 IMU传感器(I2C1 PB6/PB7 0x68)\nSSD1306 OLED(I2C1 PB6/PB7 0x3C)\nNEO-6M GPS(PB10/PB11 USART3)\nESP8266(PA9/PA10 USART1)\nHC-05蓝牙(PA2/PA3 USART2)\n按键x4(PA15/PB3/PB4/PB5)\nLEDx2(PB8/PB9)\n有源蜂鸣器(PB11)",
+    "features": "读取MAX30102血氧/心率，读取MPU6050加速度/角速度\nMPU6050实时采集加速度和角速度\n跌倒算法(加速度突变+防抖确认)\n跌倒报警+LED闪烁\nOLED双页面(实时数据/报警状态)\nOLED页面1展示心率、血氧、跌倒状态\nOLED页面2展示心率上限/血氧下限等阈值\nHC-05蓝牙上报事件记录\nApp接收蓝牙数据信息\n血氧低报警/阈值调节\n心率高报警/阈值调节",
+    "hardware_cost": 39.73,
+    "status": "31",
+    "notes": ""
+  },
+  {
+    "id": 32,
+    "title": "心率体温监测报警系统",
+    "components": "STM32F103C8T6(1)\nMAX30102×1(PB6/PB7 I2C)\nDS18B20×1(PA8)\nSSD1306 OLED×1(PB6/PB7 I2C)\n有源蜂鸣器×1(PB11)\nLED×1(PC13)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取MAX30102心率、DS18B20体温\n心率超上限/下限蜂鸣器+LED报警\n体温超上限蜂鸣器+LED报警\nOLED页面1：实时心率+体温+报警状态\nOLED页面2：心率上限/下限/体温上限阈值\nKEY1切换页面\nKEY2增大阈值/KEY3减小阈值\nKEY4选中下一阈值/长按消警\n阈值掉电保存（Flash存储）",
+    "hardware_cost": 31.93,
+    "status": "32",
+    "notes": ""
+  },
+  {
+    "id": 33,
+    "title": "智能蔬菜大棚环境监测与自动控制系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA3)\n土壤湿度传感器(PA2)\n光敏电阻(PA0)\nOLED SSD1306(PB6/PB7 I2C)\nESP8266(PA9/PA10 UART)\n有源蜂鸣器(PA4)\n直流风扇(PB1)\n加热电阻(PB3)\n水泵(PB4)\n继电器x3\n按键x4(PA5/PA6/PA7/PB0)",
+    "features": "读取DHT11温湿度传感器、土壤湿度传感器(ADC)、光敏电阻(ADC)\n温度低于下限阈值时继电器驱动加热电阻加热（带+1℃滞回）\n温度高于上限阈值时继电器驱动直流风扇通风（带-1℃滞回）\n土壤湿度低于阈值时水泵自动灌溉3秒（退出条件：湿度+5%）\n光照ADC低于阈值时蜂鸣器0.5Hz报警+OLED显示LIGHT LOW\n温度低于5℃或高于45℃时蜂鸣器1Hz报警+OLED闪烁TEMP ALARM（最高优先级）\n土壤湿度持续低于20%时蜂鸣器0.5Hz报警+OLED显示SOIL DRY\nOLED页面1展示温度/湿度/土壤湿度/光照/告警状态/网络状态/执行器状态\nOLED页面2展示温度上下限/土壤湿度/光照阈值（当前选中项高亮）\nKEY1切换OLED页面\nKEY2当前选中阈值+1\nKEY3当前选中阈值-1\nKEY4确认修改/消警\nMQTT上传温湿度/土壤湿度/光照/执行器状态/各阈值（50ms周期）\nAPP远程消警（指令01）\nAPP远程修改四项阈值（指令02~05）\nAPP远程控制风扇/加热/水泵（指令06~0B）\nAPP主页面实时监控温湿度/土壤湿度/光照/执行器状态\nAPP控制面板远程控制执行器与消警\nAPP阈值设置页远程修改各项阈值\nAPP端报警判断（TEMP ALARM/SOIL DRY/LIGHT LOW）",
+    "hardware_cost": 22,
+    "status": "33",
+    "notes": ""
+  },
+  {
+    "id": 34,
+    "title": "空气质量监测预警系统",
+    "components": "ESP32-S3-N8R2(1)\nBME280(GPIO8/GPIO9 I2C)\nSGP30(GPIO8/GPIO9 I2C)\nGP2Y1010AU0F(GPIO1 ADC)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\nLED×3(GPIO15/GPIO16/GPIO17)\n有源蜂鸣器(GPIO18)\n按键×4(GPIO11/GPIO12/GPIO13/GPIO14)",
+    "features": "读取BME280温湿度气压；SGP30 CO2/TVOC；GP2Y1010 PM2.5\nOLED页面1展示CO2/TVOC/PM2.5/温度/湿度/气压实时数据\nOLED页面2展示CO2阈值/PM2.5阈值/温度阈值\nKEY1切换OLED页面\nKEY2页面2当前阈值+1\nKEY3页面2当前阈值-1\nKEY4页面2切换选中阈值（CO2/PM2.5/温度）\nLED三级预警显示：正常绿灯/接近阈值黄灯/超标红灯\n有源蜂鸣器超阈值间歇报警\nMQTT上传CO2/TVOC/PM2.5/温度/湿度/气压/各阈值（50ms周期）\nAPP主页面实时监控（CO2/TVOC/PM2.5/温湿度/气压）\nAPP报警状态卡（JS端判断超阈值，红色高亮显示）\nAPP阈值设置（远程修改CO2/PM2.5/温度阈值）\nAPP远程消警（蜂鸣器关，LED恢复）",
+    "hardware_cost": 49.77,
+    "status": "34",
+    "notes": ""
+  },
+  {
+    "id": 35,
+    "title": "智能木屋环境监控系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA8)\n光敏电阻模块(PA0)\nHC-SR501(PA4)\nMH-Z19B(PA2/PA3 UART2)\nPMS7003(PB10/PB11 UART3)\n继电器(PB8)\n继电器(PB9)\n继电器(PB1)\n有源蜂鸣器(PB0)\nSSD1306 OLED(PB6/PB7 I2C)\nESP8266(PA9/PA10 UART1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、MH-Z19B CO2、PMS7003 PM2.5、光敏电阻光照、HC-SR501人体红外\nOLED页面1展示温湿度/CO2/PM2.5/光照/人体状态\nOLED页面2展示各项报警阈值\nKEY1切换OLED页面\nKEY2当前阈值项+1\nKEY3当前阈值项-1\nKEY4切换调节的阈值项目\nCO2/PM2.5超阈值自动开启继电器2（通风）\n光照过低且有人时自动开启继电器1（灯光）\nCO2/PM2.5/温湿度超阈值蜂鸣器报警+板载LED闪烁\nAPP主页面实时监控温湿度/CO2/PM2.5/光照/人体\nAPP控制面板远程控制继电器1/2/3\nAPP阈值设置页（温度/湿度/CO2/PM2.5四项）\nAPP端报警判断（对照阈值，超标显示报警卡）\nAPP消警指令（发送01，蜂鸣器关）",
+    "hardware_cost": 30.71,
+    "status": "35",
+    "notes": ""
+  },
+  {
+    "id": 36,
+    "title": "智能台灯控制系统",
+    "components": "ESP32-S3-N8R2(1)\n电位器×1(GPIO1)\nBH1750×1(GPIO8/GPIO9 I2C)\nHC-SR501×1(GPIO4)\nHC-SR04×1(GPIO5/GPIO6)\n有源蜂鸣器×1(GPIO38)\nLED×1(GPIO15)\nLED×1(GPIO16)\n继电器×2(GPIO17/GPIO18)\nSSD1306 OLED×1(GPIO8/GPIO9 I2C)\n按键×4(GPIO11/GPIO12/GPIO13/GPIO14)",
+    "features": "读取BH1750光照传感器；读取HC-SR501人体红外；读取HC-SR04距离；读取电位器目标亮度\nOLED页面1展示光照lux、台灯状态、模式、场景、距离\nOLED页面2展示距离阈值、疲劳时长阈值、目标光照\nKEY1短按开/关灯/消警\nKEY2长按切换阅读/休息模式；短按页面2阈值+\nKEY3短按页面2阈值-\nKEY4切换OLED页面\nHC-SR501检测有人自动开灯，无人自动熏灯\nBH1750实时检测光照不足时自动补光至目标lux\nHC-SR04检测距离<30cm且持续>=20分钟触发蜂鸣器疲劳提醒\nHC-SR501手势剆华临时关灧30分钟，期间疲劳计时暂停\nBH1750光照波动稳定判定看书场景切暖白光，不稳定判定看屏幕切冷白光",
+    "hardware_cost": 31.23,
+    "status": "36",
+    "notes": ""
+  },
+  {
+    "id": 37,
+    "title": "茶园环境检测小车系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA4)\nMH-Z19(PA2/PA3 UART2)\nBH1750(PB6/PB7 I2C)\nDS18B20(PA5)\nSSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PB11)\n红外循迹传感器(4)(PA0/PA1/PA6/PA7)\nL298N(1)\n直流电机(2)\n按键(4)(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10 UART1)",
+    "features": "读取DHT11温湿度、MH-Z19 CO2、BH1750光照、DS18B20土壤温度\nOLED页面1实时显示温度、湿度、CO2、光照、土壤温度\nOLED页面2显示各项阈值\nKEY1切换OLED页面\nKEY2阈值加、KEY3阈值减、KEY4切换阈值项目\n温度/CO2/光照/土壤温度超阈值触发蜂鸣器+LED报警\n小车红外循迹四路巡线自动行驶\nL298N驱动双直流电机前进/转向/停止\nESP8266上传传感器数据至MQTT服务器\nWindows客户端实时监控温湿度、CO2、光照、土壤温度\nWindows客户端远程消警\nWindows客户端阈值设置页远程调节各项阈值\nWindows客户端超阈值报警判断与提示",
+    "hardware_cost": 32.42,
+    "status": "37",
+    "notes": ""
+  },
+  {
+    "id": 38,
+    "title": "宠物居住环境监测系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA4)\nHC-SR04×2(PB11/PA1、PB10/PA0)\nSSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PA5)\nLED×2(PA6/PA7)\n按键×4(PA15/PB3/PB4/PB5)\n人体红外传感器(PA2)",
+    "features": "读取 DHT11 温湿度、HC-SR04 食盆水盆液位、红外活动状态\n温湿度实时监测与阈值报警\n食物、饮水液位检测与缺乏报警\n宠物活动监测与计数\n蜂鸣器/LED 报警提示与消警\nOLED 双页面显示（主界面 + 阈值设置）\nKEY1 模式键切换页面/消警\nKEY2/KEY3 加减键调整阈值",
+    "hardware_cost": 24.06,
+    "status": "38",
+    "notes": ""
+  },
+  {
+    "id": 39,
+    "title": "智能调光照明系统",
+    "components": "ESP32-S3-N8R8(1)\nLED灯珠×1(GPIO15)\n光敏电阻×1(GPIO1)\nSSD1306 OLED×1(GPIO8/GPIO9 I2C)\n按键×4(GPIO11/GPIO12/GPIO13/GPIO14)\n有源蜂鸣器×1(GPIO38)\nUSB电源×1",
+    "features": "读取光敏电阻ADC和PWM控制LED亮度\n自动调光：根据光照强度自动调节LED亮度\n手动调光：KEY2/KEY3增减亮度\nKEY1切换自动/手动模式\nKEY4进入设置页面调节光照和亮度阈值\nOLED双页面显示实时数据和阈值设置\n有源蜂鸣器状态提示\nMQTT协议通信\nAPP实时监控光照和亮度数据\nAPP远程调节亮度和模式\nAPP阈值设置和参数修改\nAPP报警判断和异常提示",
+    "hardware_cost": null,
+    "status": "39",
+    "notes": ""
+  },
+  {
+    "id": 40,
+    "title": "智能蔬菜大棚环境监测与自动控制系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA3)\n土壤湿度传感器 (PA2)\n光敏电阻 (PA0)\nOLED SSD1306(PB6/PB7 I2C)\nESP8266(PA9/PA10 UART)\n有源蜂鸣器 (PA4)\n直流风扇 (PB1)\n加热电阻 (PB10)\n水泵 (PB0)\n继电器 x3\n按键 x4(PA15/PB3/PB4/PA1)",
+    "features": "读取 DHT11 温湿度、土壤湿度 (ADC)、光敏电阻 (ADC)\n温度高于阈值自动启动风扇通风\n温度低于阈值自动启动加热电阻升温\n土壤湿度低于阈值自动启动水泵灌溉\n异常条件触发蜂鸣器报警\nOLED 双页面显示 (页面 1 实时数据/页面 2 阈值设置)\nKEY1 切换页面，KEY2 选择项，KEY3 加，KEY4 减\nMQTT 上行 50ms 周期发送传感器数据 + 阈值\nMQTT 下行接收消警/阈值修改指令\nAPP 主页面实时监控传感器数据\nAPP 控制面板远程消警\nAPP 阈值设置页修改各阈值\nAPP 端报警判断",
+    "hardware_cost": 25.77,
+    "status": "40",
+    "notes": ""
+  },
+  {
+    "id": 41,
+    "title": "基于LoRa的积水检测装置",
+    "components": "STM32F103C8T6(1)\nRISYM水位传感器(PA0)\nSSD1306(PB6/PB7 I2C)\nRa-02(SX1278)(PA4/PA5/PA6/PA7 SPI)\nESP8266(PA9/PA10 UART)\n有源蜂鸣器(PB11)\nLED(PC13)\n继电器(PB10)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取RISYM水位传感器\nOLED页面1显示水位值、报警状态\nOLED页面2显示水位报警阈值\nKEY1切换OLED页面\nKEY2页面2下阈值+1\nKEY3页面2下阈值-1\nKEY4消警/确认\n水位超阈值触发蜂鸣器+LED报警\n水位超阈值继电器吸合\nLoRa无线将水位数据传输至远程遥测终端\nESP8266 MQTT上传水位数据至服务器\nAPP主页面实时显示水位数值\nAPP报警状态卡显示积水报警\nAPP控制卡远程消警\nAPP阈值设置卡远程修改报警阈值\nAPP端水位超阈值报警判断",
+    "hardware_cost": 38.62,
+    "status": "41",
+    "notes": ""
+  },
+  {
+    "id": 42,
+    "title": "超声波清洗机智能控制系统",
+    "components": "STM32F103C8T6x1\nDS18B20x1(PA0)\nHC-SR04x1(PA1/PA2)\nDS1302x1(PA3/PA4/PA5)\nOLED SSD1306x1(PB6/PB7 I2C)\n制热片x1\n制冷片x1\n震动电机x1(PA6)\n继电器x2(PB0/PB1)\n有源蜂鸣器x1(PB10)\nLEDx1(PC13)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DS18B20温度、HC-SR04液位、DS1302时钟\n温度实时采集，位式控制制热片/制冷片双向恒温（互斥）\nHC-SR04液位检测，低液位自动关断保护防止干烧\n震动电机PWM三档调速（强/中/弱）模拟超声波清洗\n定时清洗1-60分钟，倒计时结束自动关断\n3种预设清洗模式一键切换（精密零件/日常物品/快速冲洗）\nDS1302显示当前时间，支持预约时间到点自动启动清洗\n参数掉电保存（目标温度/定时时长/功率档位/预约时间）\nOLED页面1显示水温/设定温度/液位/剩余时间/震动档位/运行状态\nOLED页面2显示目标温度/液位阈值/震动档位/预约时间设置\nKEY1切换页面/启停，KEY2模式切换/数值+，KEY3震动档位/数值-，KEY4确认保存\n低水位/超温异常报警：急促蜂鸣+LED快闪\n任务完成提示：滴滴两声+LED慢闪",
+    "hardware_cost": 31.48,
+    "status": "42",
+    "notes": ""
+  },
+  {
+    "id": 43,
+    "title": "基于STM32的菜蟹共生养殖环境监测系统",
+    "components": "STM32F103C8T6(1)\n水位传感器x1(PA0)\nMQ-135x1(PA1)\npH传感器x1(PA2)\n溶解氧传感器x1(PA3)\n浊度传感器x1(PA4)\n光敏电阵x1(PA7)\nDS18B20x1(PA5)\nDHT11x1(PA6)\nOLED SSD1306x1(PB6/PB7 I2C)\n加热棒x1(PB11)\n直流风扇x1(PB10)\n水泵x1(PB1)\n遗阳帘x1(PB0)\nLEDx1(PC13)\n继电器x4\n按键x4(PA15/PB3/PB4/PB5)\nESP8266x1(PA9/PA10 UART)",
+    "features": "读取DS18B20水温、光敏电阵光照、水位传感器、MQ-135 CO2、DHT11空气温湿度、pH传感器、溶解氧传感器、浊度传感器\n水温低于阙值自动启动加热棒（继电器1）\n水温高于阙值自动启动直流风扇降温（继电器2）\n光照不足自动开启LED补光灯\n光照过强自动关闭遗阳帘（继电器3模拟）\n水位过低自动启动水泵补水（继电器4）\n联动：光照强且水温高时同时触发遗阳帘+直流风扇\nOLED页面1实时显示水温/光照/水位/温湿度\nOLED页面2显示各阙值设置\nKEY1切换OLED页面\nKEY2页面2阙值+1\nKEY3页面2阙值-1\nKEY4确认/切换阙值项\nAPP主页面实时监控（水温/光照/水位/CO2/温湿度/pH/溶解氧/浊度）\nAPP控制面板远程控制继电器开关\nAPP阙值设置页远程修改阙值\nAPP端报警判断（水位过低/水温异常/pH异常/CO2超标）",
+    "hardware_cost": 96.04,
+    "status": "43",
+    "notes": ""
+  },
+  {
+    "id": 44,
+    "title": "基于单片机的心率监测仪",
+    "components": "STM32F103C8T6(1)\nMAX30102(PB6/PB7 I2C)\nDS18B20(PA8)\nSSD1306 OLED(PB6/PB7 I2C)\nLED(PC13)\n有源蜂鸣器 (PB11)\n按键 x4(PA15/PB3/PB4/PB5)\nWT588D(PA2/PA3 UART)\nSIM800L(PA9/PA10 UART)\nAT24C02(PB6/PB7 I2C)",
+    "features": "读取 MAX30102 心率血氧传感器、DS18B20 温度传感器\n心率血氧实时检测并显示\n体温实时检测并显示\nOLED 双页面切换显示（监控页/阈值页）\n心率/体温超阈值声光报警\nKEY1 切换页面，KEY2/KEY3 增减阈值，KEY4 切换语音\n语音播报当前心率值及报警状态\nGSM 短信发送报警信息到预设手机\n阈值存储到 AT24C02，掉电不丢失",
+    "hardware_cost": 87.89,
+    "status": "44",
+    "notes": ""
+  },
+  {
+    "id": 45,
+    "title": "智能环境监控与解锁柜",
+    "components": "STM32F103C8T6(1)\nDHT11(PA0)\nMQ-135(PA1)\nMQ-2(PA2)\nSW-420(PA3)\nBH1750(PB6/PB7 I2C)\nOLED(PB6/PB7 I2C)\nRC522(PA4-PA7/PB10 SPI)\n舵机 (PB11 PWM)\n继电器 (PB10)\nESP8266(PA9/PA10 UART)\n按键 x4(PA15/PB3/PB4/PB5)\nLED(PC13)",
+    "features": "读取 DHT11/MQ-135/MQ-2/SW-420/BH1750 传感器数据\n温湿度/空气质量/烟雾/震动/光照实时监测\n阈值超限自动开启风扇通风\nRC522 刷卡识别 + 舵机开锁\n开锁记录存储到内部 Flash\nBH1750 检测柜门开关并记录\nOLED 双页面显示（监控/阈值）\n按键调节阈值 + 页面切换\nESP8266 数据上传到 MQTT\nAPP 主页面实时监控传感器数据\nAPP 阈值设置页远程修改阈值\nAPP 开锁记录/柜门记录查询\nAPP 报警判断与消息推送",
+    "hardware_cost": 56.63,
+    "status": "45",
+    "notes": ""
+  },
+  {
+    "id": 46,
+    "title": "水质检测与智能控制系统",
+    "components": "STM32F103C8T6(1)\n浑浊度传感器 (PA0)\nPH 传感器 (PA1)\nDS18B20(PA4)\nDHT11(PA5)\n语音模块 (PA2/PA3)\nOLED(PB6/PB7)\n加热器 (PB0)\n直流风扇 (PB10)\n继电器 (3)\nESP8266(PA9/PA10)\n有源蜂鸣器 (PB11)\nLED(PC13)\n按键 (4)",
+    "features": "读取 PH 传感器、浑浊度传感器、DS18B20 温度、DHT11 湿度\nOLED 页面 1 实时显示水质/温度/湿度数据\nOLED 页面 2 阈值设置（KEY1 切换项，KEY2+，KEY3-，KEY4 确认）\n加热器自动/手动控制（继电器 1）\n消毒装置自动/手动控制（继电器 2）\n通风设备自动/手动控制（继电器 3）\n语音播报实时数据和报警\n声光报警（蜂鸣器 + LED）\nWiFi 数据上传到 MQTT\nAPP 主页面实时监控 PH/浑浊度/温度/湿度\nAPP 控制面板远程控制加热器/消毒/通风\nAPP 阈值设置页远程修改阈值\nAPP 端报警判断和展示",
+    "hardware_cost": 133.4,
+    "status": "46",
+    "notes": ""
+  },
+  {
+    "id": 47,
+    "title": "智能药盒提醒系统",
+    "components": "STM32F103C8T6(1)\nDS1302(PA0)\nDHT11(PA1)\nTCRT5000×2(PA2/PA3)\nSW-420(PA4)\nHC-SR501(PA5)\nESP8266(PA9/PA10 UART)\n0.96 寸 OLED(PB6/PB7 I2C)\n有源蜂鸣器 (PB11)\nLED(PB10)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取 DS1302 时钟、DHT11 温湿度、TCRT5000 药盒开合、TCRT5000 取药检测、SW-420 震动、HC-SR501 人体\n到达设定时间检测人体红外，有人则触发声光报警\n检测药盒开合与取药动作，判定已服/漏服并记录\n温湿度超标时独立报警并推送 WiFi\nOLED 页面 1 显示时间/提醒时间/服药状态/温湿度\nOLED 页面 2 设置温湿度阈值\nKEY1 切换页面，KEY2+/KEY3-调节，KEY4 确认保存\nAPP 主页面实时监控时间、温湿度、药盒状态、服药记录\nAPP 阈值设置页修改温度/湿度阈值\nAPP 端报警判断（对照上行数据判断服药提醒/温湿度超标）\nAPP 远程消警操作\nAPP 历史服药记录存储与周/月报告生成",
+    "hardware_cost": 55.91,
+    "status": "47",
+    "notes": ""
+  },
+  {
+    "id": 48,
+    "title": "茶园环境检测小车系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA4)\nMH-Z19(PA2/PA3 UART2)\nBH1750(PB6/PB7 I2C)\nDS18B20(PA5)\nSSD1306(PB6/PB7 I2C)\n有源蜂鸣器(PB11)\n红外循迹传感器(4)(PA0/PA1/PA6/PA7)\nL298N(1)\n直流电机(2)\n按键(4)(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10 UART1)",
+    "features": "读取DHT11温湿度、MH-Z19 CO2、BH1750光照、DS18B20土壤温度\nOLED页面1实时显示温度、湿度、CO2、光照、土壤温度\nOLED页面2显示各项阈值\nKEY1切换OLED页面\nKEY2阈值加、KEY3阈值减、KEY4切换阈值项目\n温度/CO2/光照/土壤温度超阈值触发蜂鸣器+LED报警\n小车红外循迹四路巡线自动行驶\nL298N驱动双直流电机前进/转向/停止\nESP8266上传传感器数据至MQTT服务器\nWindows客户端实时监控温湿度、CO2、光照、土壤温度\nWindows客户端远程消警\nWindows客户端阈值设置页远程调节各项阈值\nWindows客户端超阈值报警判断与提示",
+    "hardware_cost": null,
+    "status": "48",
+    "notes": ""
+  },
+  {
+    "id": 49,
+    "title": "STM32蓝牙自动售货机",
+    "components": "STM32F103C8T6(1)\nHC-05蓝牙模块(PA9/PA10 UART)\n红外对射传感器(PA0)\nSG90舵机(PB11)\n有源蜂鸣器(PB10)\nOLED SSD1306(PB6/PB7 I2C)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取红外对射投币信号\nOLED主界面显示商品名/单价/库存，KEY1切换商品，KEY2/KEY3调整数量\nKEY4确认进入支付界面，显示应付/已投金额\n红外对射每投一币已投金额+1元\n已投>=应付时KEY4确认支付，SG90出货N次，库存-N，OLED显示找零\n已投<应付时蜂鸣器短鸣提示继续投币，KEY4可取消返回主界面\n商品库存归零时蜂鸣器报警+OLED提示缺货\n蓝牙上报所有商品库存状态（每次变化发送）\nAPP商品卡片显示名称/单价/库存\nAPP点击出货按钮下发SELL指令，STM32舵机出货+库存-1\nAPP库存复位按钮下发RESET指令，STM32所有库存恢复初始值\nAPP库存为0时弹窗报警提示缺货",
+    "hardware_cost": 19.74,
+    "status": "49",
+    "notes": ""
+  },
+  {
+    "id": 50,
+    "title": "井盖异常检测系统",
+    "components": "STM32F103C8T6(1)\nMPU6050(PB6/PB7 I2C)\nNEO-6M GPS(PB10 UART3)\nESP8266(1)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB0)\nLED(PC13)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取MPU6050姿态传感器、GPS定位\n井盖状态检测（正常/移位/缺失，角度阈值判断）\n本地报警：蜂鸣器响+LED闪烁\nOLED页面1：显示编号、状态、角度、GPS坐标\nOLED页面2：移位角度阈值调节\nKEY1切换页面,KEY2阈值+1度,KEY3阈值-1度,KEY4消警\nMQTT上传：编号+Roll+Pitch+状态码+坐标+阈值\nAPP主页面：实时监控井盖状态与GPS位置\nAPP报警判断：状态碁1=移位报警,状态碁2=缺失报警\nAPP控制：远程消警\nAPP阈值设置：远程修改移位角度阈值",
+    "hardware_cost": 49.11,
+    "status": "50",
+    "notes": ""
+  },
+  {
+    "id": 51,
+    "title": "直流电机闭环调速控制系统",
+    "components": "STM32F103C8T6(1)\nTB6612FNG(PA8/PB0/PB1/PB10)\n直流有刷电机x1\n增量式光电编码器x1(PA0/PA1)\nOLED SSD1306(PB6/PB7 I2C)\n独立按键x5(PA15/PB3/PB4/PB5/PB11)\n旋转编码器x1(PA2/PA3/PA4)\n12V转5V降压模块x1",
+    "features": "读取增量式光电编码器转速\n电机启动/停止控制（KEY1）\n正转/反转切换（KEY2，停止状态下有效）\n目标转速粗调加速（KEY3，+100rpm）\n目标转速粗调减速（KEY4，-100rpm）\n旋转编码器精细调速（±10rpm/格）\n旋转编码器按键归零目标转速至1000rpm\nPWM无级调速（TIM1_CH1 PWM输出）\nPID闭环转速控制（50ms周期，增量式PID）\nOLED实时显示目标转速/实际转速/占空比/运行状态\nKEY5确认键（预留）",
+    "hardware_cost": 18,
+    "status": "51",
+    "notes": ""
+  },
+  {
+    "id": 52,
+    "title": "温室智能通风卷膜控制系统",
+    "components": "STM32F103C8T6(1)\nDHT22(PA0)\nOLED SSD1306(PB6/PB7 I2C)\n按键x4(PA15/PB3/PB4/PB5)\n直流风扇(PB11)\n继电器x1\n28BYJ-48+ULN2003(PB13/PB14/PB15/PA8)\n有源蜂鸣器(PB0)\nSIM800C(1)",
+    "features": "读取DHT22温湿度传感器\nOLED页面1显示温湿度/风扇状态/卷膜状态/报警状态\nOLED页面2显示4项阈值设置（TempHi/TempLo/HumHi/CurtHi）\nKEY1切换OLED页面\nKEY2（页面1）切换AUTO/MANUAL模式；（页面2）切换选中阈值项\nKEY3（页面1）MANUAL下切换风扇ON/OFF；（页面2）阈值+1\nKEY4（页面1）MANUAL下循环切换卷膜状态，长按消警；（页面2）阈值-1\nAUTO模式：温超TempHi或湿超HumHi→风扇开启，恢复正常→关闭\nAUTO模式：温超CurtHi→步进电机正转卷开，温低于TempLo→反转卷闭\nMANUAL模式：KEY3手动切换风扇开/关\nMANUAL模式：按键手动控制卷膜步进电机卷开/卷闭/停止\n温湿度超阈值连续3秒→蜂鸣器报警，长按KEY4消警，传感器恢复后自动清零\n温湿度超阈值→SIM800C发送短信预警，同一事件仅发一次",
+    "hardware_cost": 25.71,
+    "status": "52",
+    "notes": ""
+  },
+  {
+    "id": 53,
+    "title": "智能服药提醒盒",
+    "components": "ESP32-S3-N16R8(1)\nSYN6288(GPIO16/17 UART)\nSSD1306 OLED(GPIO8/9 I2C)\nSHT30(GPIO8/9 I2C)\nBH1750(GPIO8/9 I2C)\nA1344霍尔开关x4(GPIO1/2/3/4)\n舵机SG90(GPIO5)\n有源蜂鸣器(GPIO15)\nKEY1(GPIO11)\nKEY2(GPIO12)\nKEY3(GPIO13)\nKEY4(GPIO14)",
+    "features": "读取SHT30温湿度、BH1750光照传感器\nSYN6288语音提醒服药（4路：爷爷早晚、奶奶早晚）\n霍尔传感器检测开盒，10分钟内未开盒记漏服\nPushPlus微信推送漏服提醒\n环境超阈值持续10秒蜂鸣器报警\nKEY4页面1消警（静默标志位）\nKEY2页面1触发切药器舵机旋转180度\nKEY1切换OLED页面\nKEY2/KEY3页面2调节温湿度光照阈值\nKEY4页面2切换选中阈值项\nOLED页面1实时显示温湿度光照和服药时间\nOLED页面2显示阈值设置\nWiFi AP+STA双模，手机网页管理\n网页设置服药时间/启用开关/保质期\n网页设置环境阈值（温湿度光照上限）\n网页显示漏服记录（最近10条）\n网页实时显示环境数值，超阈值变红\nNTP网络时间同步（UTC+8）",
+    "hardware_cost": 9.74,
+    "status": "53",
+    "notes": ""
+  },
+  {
+    "id": 54,
+    "title": "宠物居住环境监测系统",
+    "components": "STM32F103C8T6(1)\n光敏传感器模块(PA0)\n土壤湿度传感器模块(PA2)\nMQ-2烟雾传感器模块(PA3)\nDS18B20(PA1)\nSSD1306 OLED(PB6/PB7)\n继电器×3\n直流风扇(PB0)\n加热电阻(PB1)\n微型水泵(PB11)\nLED(PB10)\n有源蜂鸣器(PC13)\n按键×4(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10 UART)",
+    "features": "读取光照、土壤湿度、烟雾、温度传感器\n温度超阈值自动控制风扇/加热电阻（AUTO模式）\n土壤湿度低于阈值自动控制水泵（AUTO模式）\n烟雾超阈值触发蜂鸣器报警，KEY4或APP消警\nLED补光灯：光照低于阈值自动开启（AUTO模式）\nOLED页面1显示温度/光照/湿度/烟雾实时数据\nOLED页面2显示各项阈值\nKEY1切换OLED页面，KEY2选择阈值项，KEY3阈值增加，KEY4阈值减少/消警\nESP8266 MQTT上传传感器数据和阈值（50ms周期）\nWindows客户端实时监控各传感器数值\nWindows客户端远程控制风扇/加热电阻/水泵/LED开关（MANUAL模式）\nWindows客户端阈值设置页远程修改各项阈值\nWindows客户端报警判断并提示\nWindows客户端远程消警",
+    "hardware_cost": 24.06,
+    "status": "54",
+    "notes": ""
+  },
+  {
+    "id": 55,
+    "title": "养殖水质监测与预警系统",
+    "components": "STM32F103C8T6(1)\nTDS 传感器 (PA0)\nPH 传感器 (PA1)\n浊度传感器 (PA2)\nDS18B20(PA3)\n换水泵 (PB11)\n加药泵 (PB10)\n增氧泵 (PB1)\n继电器×3\n有源蜂鸣器 (PB0)\nOLED(PB6/PB7)\n按键×4(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10)",
+    "features": "读取 TDS、pH、水温、浊度传感器\nTDS 超标或浊度超标时自动启动换水泵\npH 超标时自动启动加药泵\n水温超标时自动启动增氧泵\n水质异常时蜂鸣器报警，KEY4 或 APP 可消警\nOLED 双页面显示：页面 1 实时监控，页面 2 阈值设置\nKEY1 切换 AUTO/MANUAL 模式，KEY2/KEY3 阈值设置页切换选中项，KEY4 确认/消警\nESP8266 通过 MQTT 上传传感器数据和阈值\nAPP 主页面实时监控各指标数值\nAPP 控制面板远程控制 3 个泵开关（MANUAL 模式）\nAPP 阈值设置页修改 4 个指标阈值\nAPP 端完成报警判断并显示报警状态\nAPP 远程消警指令下发",
+    "hardware_cost": 180,
+    "status": "55",
+    "notes": ""
+  },
+  {
+    "id": 56,
+    "title": "自适应车流量红绿灯系统",
+    "components": "STM32F103C8T6(1)\nSSD1306 OLED(PB6/PB7 I2C)\nLED×6(PB11/PB0/PB1/PC13/PC14/PC15)\n直流风扇×1(PB10)\n旋钮×1(PA0)\n按键×4(PA15/PB3/PB4/PB5)\n有源蜂鸣器×1(PA1)\nESP8266(PA9/PA10 UART)",
+    "features": "读取旋钮 ADC 值模拟车流量\n固定定时模式：标准红绿灯时序控制\n自适应模式：根据车流量动态调整绿灯时长\nOLED 双页面显示（实时监控/阈值设置）\nKEY1 切换模式、KEY2 切换页面、KEY3/KEY4 调节参数\n蜂鸣器模式切换/绿转红提示\nESP8266 MQTT 通信（50ms 周期上传数据）\nWindows 客户端实时监控红绿灯状态和车流量\nWindows 客户端远程控制模式切换\nWindows 客户端阈值设置（最小/最大绿灯时间）\nWindows 客户端报警判断（异常模式检测）",
+    "hardware_cost": 19.16,
+    "status": "56",
+    "notes": ""
+  },
+  {
+    "id": 57,
+    "title": "智能体重测量与体脂分析系统",
+    "components": "STM32F103C8T6(1)\nHX711(PA0/PA1)\n100kg 压力传感器\n有源蜂鸣器 (PB10)\nLED×2(PB0/PB1)\n按键×4(PA15/PB3/PB4/PB5)\nSSD1306 OLED(PB6/PB7 I2C)",
+    "features": "读取 HX711+100kg 传感器体重数据\nBMI 和 BFR 身体指数计算\n超阈值红灯闪烁 + 蜂鸣器报警\n未超阈值绿灯闪烁\nOLED 双页面显示（实时监控/阈值设置）\n4 按键控制（页面切换/移位/加减）",
+    "hardware_cost": 33.41,
+    "status": "57",
+    "notes": ""
+  },
+  {
+    "id": 58,
+    "title": "智能外卖存取柜",
+    "components": "STM32F103C8T6(1)\nSSD1306(PB6/PB7 I2C)\n独立按键×4(PA0/PA1/PA2/PA3)\nSG90 舵机 (PA6 PWM)\n继电器 (PA7)\n有源蜂鸣器 (PB10)\nLED(PA8)\nSIM800L(PA9/PA10 UART)",
+    "features": "读取 4 个独立按键输入\n4 位验证码输入与比对功能\n验证码正确时舵机转动 90°开箱\n验证码正确时继电器吸合 3 秒\n输错 5 次蜂鸣器+LED 报警\n接收短信更新验证码\nOLED 实时显示输入状态和系统状态",
+    "hardware_cost": 35,
+    "status": "58",
+    "notes": ""
+  },
+  {
+    "id": 59,
+    "title": "粮仓环境安全监测系统",
+    "components": "STM32F103C8T6(1)\nMQ-2(PA2)\n火焰传感器 (PA0)\nJW01-CO2(PB11)\nDHT11(PA8)\nSSD1306 OLED(PB6/PB7)\n按键 x4(PA15/PB3/PB4/PB5)\n有源蜂鸣器 (PB12)\n直流风扇 (PB8)\n水泵 (PB9)\n继电器 x2\nESP8266(PA9/PA10)",
+    "features": "读取 MQ-2 烟雾、火焰、JW01-CO₂、DHT11 温湿度传感器\nOLED 页面 1 展示烟雾、CO₂、火焰、温湿度实时数据\nOLED 页面 2 展示五项阈值设置\nKEY1 切换页面，KEY2/3/4 调节阈值\nMQ-2 超阈值蜂鸣器报警\nJW01 CO₂超阈值蜂鸣器报警\n火焰超阈值蜂鸣器报警 + 水泵自动喷水\n温度/湿度超阈值自动启动风扇\nESP8266 MQTT 上传传感器数据 + 阈值（50ms 周期）\nAPP 主页面实时监控五项数据\nAPP 控制面板远程消警、远程开关风扇/水泵\nAPP 阈值设置页远程修改五项阈值\nAPP 端报警判断（超阈值推送提示）",
+    "hardware_cost": 44.55,
+    "status": "59",
+    "notes": ""
+  },
+  {
+    "id": 60,
+    "title": "智能药盒提醒系统",
+    "components": "STM32F103C8T6(1)\nDS1302(PA2/PA3/PA4)\n红外对管 (PA0)\nHC-SR501(PA1)\nSW-420(PA5)\nDHT11(PA6)\n按键×4(PA15/PB3/PB4/PB5)\nLED(PB0)\n有源蜂鸣器 (PB1)\nSSD1306 OLED(PB6/PB7)\nESP8266(PA9/PA10)",
+    "features": "读取 DS1302 时间、DHT11 温湿度、红外对管 DO、HC-SR501 DO、SW-420 DO\n服药提醒判断（到达时间 + 有人→报警，药盒打开→已服/漏服）\n用户消警（KEY4 按下→silenced=1）\n温湿度超标报警（>25°C 或>60%→蜂鸣器长鸣）\n震动检测暂停报警（SW-420 触发→暂停，恢复后继续）\nOLED 双页面显示（页面 1 实时监控，页面 2 阈值设置）\nWiFi 数据上报（MQTT 50ms 周期上报传感器数据）\nAPP 主页面实时监控\nAPP 远程控制消警\nAPP 阈值设置（提醒时间、温湿度阈值）\nAPP 报警判断与推送",
+    "hardware_cost": 55.91,
+    "status": "60",
+    "notes": ""
+  },
+  {
+    "id": 61,
+    "title": "健康监护仪",
+    "components": "ESP32-S3-N8R2(1)\nMAX30102(GPIO8/GPIO9)\nMPU6050(GPIO8/GPIO9)\nDHT11(GPIO21)\nSSD1306 OLED(GPIO8/GPIO9)\n按键×4(GPIO11/12/13/14)\n有源蜂鸣器 (GPIO35)\nLED(GPIO36)\nESP8266(GPIO17/GPIO18)",
+    "features": "读取 MAX30102 心率血氧传感器\n读取 MPU6050 加速度陀螺仪传感器\n读取 DHT11 温湿度传感器\n心率血氧实时采集（50ms 周期）\n运动数据采集并计算步数/卡路里\n温湿度采集（1 秒周期）\n体重数据输入（KEY1 切换位，KEY2+/KEY3-调节，KEY4 确认）\nOLED 双页面显示（页面 1 实时监控/页面 2 阈值设置）\n体重骤变/运动不足蜂鸣器报警\nLED 状态指示\nMQTT 数据上传（50ms 周期）\nAPP 主页面实时监控显示\nAPP 阈值设置页\nAPP 端报警判断\nAPP 历史数据展示（体重曲线、运动周报）\nAPP 饮食摄入录入",
+    "hardware_cost": 60.22,
+    "status": "61",
+    "notes": ""
+  },
+  {
+    "id": 62,
+    "title": "多传感器安全监测报警系统",
+    "components": "STM32F103C8T6(1)\nMQ-2 烟雾传感器 (PA0)\n水位传感器 (PA1)\nDHT11(PA4)\n光敏传感器 (PA2)\n门磁传感器 (PA5)\n声音传感器 (PA3)\n有源蜂鸣器 (PB11)\nLED(PB10)\n直流排水泵 (PB1)\n继电器 (1)\nSSD1306 OLED(PB6/PB7)\n按键×4(PA15/PB3/PB4/PB5)\nESP8266(PA9/PA10 UART)",
+    "features": "读取 MQ-2 烟雾、水位、DHT11 温湿度、光敏、门磁、声音传感器\n烟雾超阈值本地声光报警\n水位超阈值自动启动排水泵\n光照强度实时监测\n门磁开关状态检测\n声音异常检测\nOLED 双页面显示（实时监控/阈值设置）\n按键控制（页面切换/阈值调节）\nMQTT 连接云平台上报传感器数据\nAPP 主页面实时监控\nAPP 控制面板远程消警\nAPP 阈值设置页\nAPP 端报警判断",
+    "hardware_cost": 61.48,
+    "status": "62",
+    "notes": ""
+  },
+  {
+    "id": 63,
+    "title": "生鲜冷链物流监控系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA0)\nMPU6050(PB6/PB7 I2C)\nNEO-6M GPS(PB10 UART3)\nESP8266(1)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器 (PB0)\nLED(PC13)\n按键 x4(PA15/PB3/PB4/PB5)",
+    "features": "读取 DHT11 温湿度、MPU6050 姿态、NEO-6M GPS 位置\n温湿度实时采集（50ms 周期）\n姿态异常检测（倾倒/震动/摔落判断）\nGPS 定位解析（NMEA 格式，UART3）\nOLED 双页面显示（监控页 + 阈值页）\n声光报警自动触发（超阈值时蜂鸣器+LED 联动）\n阈值按键调节（KEY1 翻页，KEY2/KEY3 加减，KEY4 消警）\nSTM32 内部 Flash 数据存储（10 秒/次）\nWiFi 数据上传（MQTT 50ms 周期）\nAPP 主页面实时监控（温湿度/GPS 经纬度/姿态）\nAPP 报警状态展示（弹窗 + 声音提醒）\nAPP 阈值设置页（下发指令修改阈值）\nAPP 远程消警（下发 01 指令）",
+    "hardware_cost": null,
+    "status": "63",
+    "notes": ""
+  },
+  {
+    "id": 64,
+    "title": "粮仓玉米烘干自动控制系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA8)\n土壤湿度传感器 (PA0)\nMQ-2(PA2)\nOLED SSD1306(PB6/PB7 I2C)\n继电器 (PB8)\n继电器 (PB9)\n继电器 (PB10)\n继电器 (PB11)\n有源蜂鸣器 (PB12)\nLED(PB13)\nESP8266(PA9/PA10 UART1)\n独立按键 x4(PA15/PB3/PB4/PB5)\n直流风扇 (2)\n微型水泵 (1)\n加热片 (1)",
+    "features": "读取 DHT11 温湿度传感器、土壤湿度传感器、MQ-2 烟雾传感器\n环境温湿度超阈值自动启动烘干/通风设备\n玉米水分超标自动开启烘干并声光报警\n烟雾浓度超标触发声光报警\nKEY1 切换 OLED 页面/AUTO-MANUAL 模式\nKEY2 阈值加\nKEY3 阈值减\nKEY4 消警/手动控制烘干通风\nOLED 双页面显示实时数据和阈值\nMQTT 上传传感器数据和设备状态\nMQTT 接收消警和阈值修改指令\nAPP 主页面实时监控温湿度水分烟雾设备状态\nAPP 阈值设置页修改阈值\nAPP 端报警判断和异常提醒\nAPP 远程消警/模式切换/手动控制",
+    "hardware_cost": 0,
+    "status": "64",
+    "notes": ""
+  },
+  {
+    "id": 65,
+    "title": "智能坐姿矫正台灯系统",
+    "components": "STM32F103C8T6×1\n光敏电阻×1(PA0)\nHC-SR04×1(PA6/PA7)\nAPS2PRO×1(PA2/PA3)\nJDY-31×1(PA9/PA10)\nSSD1306 OLED×1(PB6/PB7)\nLED×1(PA5)\n4 个独立按键×1(PA15/PB3/PB4/PB5)\n有源蜂鸣器×1(PA4)",
+    "features": "读取光敏电阻、HC-SR04 传感器数据\n检测环境光照强度，自动调节台灯亮度\n检测人体坐姿距离，超阈值蜂鸣器报警\n语音识别控制开关灯、调亮度\n蓝牙连接手机，APP 实时监控 + 远程控制\nOLED 双页面：实时监控页 + 阈值设置页\n按键切换页面、切换自动/手动模式、调节亮度/阈值\nAPP 主页面实时监控\nAPP 控制面板远程控制\nAPP 阈值设置页\nAPP 端报警判断",
+    "hardware_cost": null,
+    "status": "65",
+    "notes": ""
+  },
+  {
+    "id": 66,
+    "title": "智能家居环境控制系统",
+    "components": "STM32F103C8T6(1)\nSHT30(PB6/PB7)\nBH1750(PB6/PB7)\nSU03T(PA9/PA10 UART)\n继电器×2(PB10/PB11)\nSSD1306 OLED(PB6/PB7)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取 SHT30 温湿度和 BH1750 光照强度\n语音识别用户指令控制空调/风扇\nAUTO 模式下传感器阈值自动触发继电器\nMANUAL 模式下仅语音指令控制\n动态优先级仲裁：语音指令优先于自动控制\nOLED 双页面显示（实时监控/阈值设置）\n按键交互：翻页/模式切换/阈值调节",
+    "hardware_cost": 12.01,
+    "status": "66",
+    "notes": ""
+  },
+  {
+    "id": 67,
+    "title": "智能药盒系统",
+    "components": "STM32F103C8T6(1)\nDS1302(PB12/PC14/PC15)\nSSD1306 OLED(PB6/PB7 I2C)\nKEY x4(PA15/PB3/PB4/PB5)\n有源蜂鸣器 (PB10)\nLED(PC13)\n红外传感器 (PA1)\nESP8266(PA9/PA10 UART)\nHX711+ 称重传感器 (PC0/PC1)",
+    "features": "读取 DS1302 时钟、HX711 重量、红外传感器取药动作\nOLED 实时显示时间、日期、服药提醒、漏服标识、用药记录\nKEY1 长按消警，KEY2 设置服药参数，KEY3/KEY4 翻查历史记录\nKEY4 确认服药并写入 Flash，超时判定漏服\n红外检测取药动作，重复取药声光报警\n到达预设时间蜂鸣器+LED 间歇报警\n重量检测实时计算药品余量\nESP8266 通过 MQTT 上传用药状态 JSON 数据\nAPP 主页面实时监控用药状态\nAPP 报警状态展示与远程消警\nAPP 阈值设置页（服药次数、粒数、提醒时间）\nAPP 远程修改服药计划",
+    "hardware_cost": 50.89,
+    "status": "67",
+    "notes": ""
+  },
+  {
+    "id": 68,
+    "title": "农机作业监测终端",
+    "components": "STM32F103C8T6(1)\nBDS/GPS-6M(PB10 UART)\n霍尔传感器 (PA0)\n有源蜂鸣器 (PB0)\nLED(PC13)\nESP8266(PA9/PA10 UART)\nSSD1306 OLED(PB6/PB7 I2C)\n按键 x4(PA15/PB3/PB4/PB5)",
+    "features": "读取 GPS 定位数据和霍尔速度传感器\nGPS 定位数据采集（UART3 解析 NMEA 经纬度）\n霍尔速度传感器数据采集（ADC 脉冲计数→车速 km/h）\n作业面积自动计算（凸包算法处理 GPS 坐标）\n本地声光报警判断与触发（速度超阈值）\nOLED 双页面显示（监控页 + 阈值页）\n按键交互（翻页/阈值调节/消警）\nMQTT 数据上传（50ms 周期，原始数据 + 阈值）\n远程消警与阈值修改指令接收\nAPP 主页面实时监控（速度/GPS/面积）\nAPP 报警状态展示\nAPP 远程消警\nAPP 远程阈值设置",
+    "hardware_cost": 29.41,
+    "status": "68",
+    "notes": ""
+  },
+  {
+    "id": 69,
+    "title": "便携式输液监护系统",
+    "components": "STM32F103C8T6×2(便携式+护理站)\nHX711×1(PA0/PA1)\n应变片传感器×1\n红外传感器×1(PA2 ADC 滴速检测)\nSSD1306 OLED×2(PB6/PB7 I2C)\n有源蜂鸣器×2(PB11/PB10)\nESP8266×2(PA9/PA10 UART)\n按键×8(PA15/PB3/PB4/PB5 各从站4个)",
+    "features": "读取HX711应变片传感器重量数据\n读取红外传感器ADC值计算滴速\nOLED双页面显示（实时数据+阈值设置）\n按键翻页、阈值调节、消警操作\n输液完成本地蜂鸣器报警\nMQTT上报液位数据到上位机\nMQTT上报滴速数据到上位机\n接收上位机响铃指令触发蜂鸣器\nAPP主页面实时监控双从站数据\nAPP报警状态显示\nAPP远程响铃控制\nAPP阈值设置\nAPP消警操作",
+    "hardware_cost": 67.97,
+    "status": "69",
+    "notes": ""
+  },
+  {
+    "id": 70,
+    "title": "多参数环境监测报警系统",
+    "components": "ESP32-S3-N8R2(1)\nDHT11(GPIO21)\nGP2Y1010AU0F(GPIO35/GPIO1)\nMQ-135(GPIO2)\n有源蜂鸣器(GPIO38)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\n按键x4(GPIO11/12/13/14)",
+    "features": "读取DHT11温湿度、GP2Y1010AU0F PM2.5、MQ-135有害气体传感器\nOLED页面1实时显示温湿度/PM2.5/气体浓度/报警状态\nOLED页面2显示并调节温度/湿度/PM2.5/气体阈值\nKEY1切换OLED页面\nKEY2页面2中当前阈值项+1\nKEY3页面2中当前阈值项-1\nKEY4消警（关闭蜂鸣器）\n温度/湿度/PM2.5/气体任一超阈值蜂鸣器报警\nMQTT上传传感器数据及阈值（50ms周期）\nAPP主页面实时监控温湿度/PM2.5/气体浓度\nAPP报警判断（对比阈值，超标提示）\nAPP控制面板远程消警\nAPP阈值设置页远程修改各项阈值",
+    "hardware_cost": 42.12,
+    "status": "71",
+    "notes": ""
+  },
+  {
+    "id": 71,
+    "title": "智能空气质量监测报警系统",
+    "components": "STM32F103C8T6(1)\nZPH01(1)(PB10/PB11 UART3)\nZE08-CH2O(1)(PA2/PA3 UART2)\n直流风扇(1)(PB1 PWM)\nMOSFET(1)\n有源蜂鸣器(1)(PB0)\nESP8266(1)(PA9/PA10 UART1)\nSSD1306 OLED(1)(PB6/PB7 I2C)\n按键(4)(PA15/PB3/PB4/PB5)",
+    "features": "读取ZPH01 PM2.5传感器、ZE08-CH2O甲醛传感器\nOLED双页面显示（页面1实时数据，页面2阈值设置）\n按键调节阈值（KEY1切换页面，KEY2/KEY3加减阈值，KEY4消警）\n超阈值蜂鸣器报警并触发风扇PWM调速\nWiFi MQTT数据上传（ESP8266）\nAPP主页面实时监控PM2.5/甲醛数值\nAPP阈值设置页远程调节\nAPP端报警判断（超阈值高亮提示）\nAPP远程消警指令下发\nAPP风扇控制（AUTO/MANUAL模式切换）",
+    "hardware_cost": 27.14,
+    "status": "72",
+    "notes": ""
+  },
+  {
+    "id": 72,
+    "title": "星座查找器",
+    "components": "ESP32-S3-N8R2(1)\nGPS模块(GPIO21/GPIO35)\nSSD1306 OLED(GPIO8/GPIO9)\n按键(GPIO11/12/13/14)",
+    "features": "实时定位（GPS获取经纬度）\n计算可见星座（根据位置+时间）\nWiFi联网下载星座数据\nOLED主页面显示当前可见星座图\nOLED星座列表页面显示15+星座\nKEY1切换页面、KEY2滚动列表、KEY3选择星座、KEY4返回实时星座",
+    "hardware_cost": 40.01,
+    "status": "73",
+    "notes": ""
+  },
+  {
+    "id": 73,
+    "title": "矿洞空气质量监测与智能降尘系统",
+    "components": "STM32F103C8T6(1)\nMQ-2烟雾传感器(PA0)\n直流风扇(PB11)\n雾化器模块(PB10)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB1)\n继电器x2\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取MQ-2烟雾传感器浓度值\nOLED双页面显示（烟雾浓度+阈值+执行器状态）\n按键设置烟雾阈值（KEY1翻页、KEY2加、KEY3减、KEY4消警/确认）\n烟雾超阈值自动启动风扇排风\n烟雾超阈值自动启动雾化器降尘\n烟雾超阈值蜂鸣器报警\nKEY4消警功能（蜂鸣器静默，恢复正常后自动解除）",
+    "hardware_cost": 32.02,
+    "status": "74",
+    "notes": ""
+  },
+  {
+    "id": 74,
+    "title": "营地环境监测与安防预警系统",
+    "components": "ESP32-S3-N8R2(1)\nMQ-2气体传感器(GPIO1 ADC)\n雨滴传感器(GPIO2 ADC)\nDHT11温湿度传感器(GPIO21)\nHC-SR501人体红外传感器(GPIO35)\n红外对射模块(GPIO36)\n有源蜂鸣器(GPIO37)\nLED×2(GPIO38/GPIO39)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\n按键×4(GPIO11/GPIO12/GPIO13/GPIO14)",
+    "features": "读取MQ-2燃气浓度、DHT11温湿度、雨滴传感器、HC-SR501人体红外、红外对射模块\nOLED页面1展示燃气、温湿度、雨滴、安防状态、工作模式\nOLED页面2展示燃气阈值、高温阈值、低温阈值、雨滴阈值\nKEY1切换OLED页面\nKEY2页面1消警/页面2阈值+1\nKEY3页面2阈值-1\nKEY4页面2切换阈值项\n燃气超阈值触发声光报警\n人体红外/红外对射触发安防报警\n温度异常（高温/低温）触发预警\nWeb配网服务器，用户设置阈值和切换工作模式\n正常模式持续运行Web服务器\n低功耗模式定时唤醒采集上报后睡眠\n中断唤醒立即处理报警上报\nMQTT上传传感器数据到云端\nAPP主页面实时监控\nAPP/Web阈值设置页远程修改阈值\nAPP/Web端报警判断\nAPP/Web历史数据查询",
+    "hardware_cost": 46.14,
+    "status": "75",
+    "notes": ""
+  },
+  {
+    "id": 75,
+    "title": "仪表图像识别系统",
+    "components": "ESP32-S3-CAM视觉模块(1)",
+    "features": "读取ESP32-S3-CAM摄像头图像流\nPython上位机接收MJPEG流并实时显示\n灰度图像匹配识别（3张仪表模板）\nGUI界面显示识别结果及意义",
+    "hardware_cost": null,
+    "status": "76",
+    "notes": ""
+  },
+  {
+    "id": 76,
+    "title": "双药盒智能管理系统",
+    "components": "STM32F103C8T6(1)\nHX711(PA0/PA1)\nHX711(PA2/PA1)\n红外传感器(PA3)\n红外传感器(PA4)\nDHT11(PA5)\nSSD1306 OLED(PB6/PB7 I2C)\nLED(PB0)\nLED(PB1)\n有源蜂鸣器(PB11)\nESP8266(PA9/PA10)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取HX711称重传感器(药盒1/药盒2)、红外传感器(药盒1/药盒2)、DHT11温湿度\nOLED页面1展示药盒1重量/药盒2重量/温湿度/红外状态\nOLED页面2展示药盒1/药盒2重量阈值/温度阈值/湿度阈值\nKEY1切换OLED页面\nKEY2页面2切换选中阈值项\nKEY3页面2当前阈值+1\nKEY4页面2当前阈值-1/长按消警\n药盒重量低于阈值LED亮+蜂鸣器报警\n温湿度超阈值蜂鸣器报警\nMQTT上传传感器数据及阈值(50ms周期)\nAPP主页面实时监控药盒重量/温湿度/红外状态\nAPP控制面板远程消警\nAPP阈值设置页远程修改各项阈值\nAPP端报警判断(重量不足/温湿度超标高亮提示)",
+    "hardware_cost": 57.61,
+    "status": "77",
+    "notes": ""
+  },
+  {
+    "id": 77,
+    "title": "盘山公路行车安全智能监控与预警系统",
+    "components": "STM32F103C8T6(1)\nSSD1306 OLED(PB6/PB7 I2C)\n直流减速电机（带霍尔编码器）(PA0/PA1)\nTB6612(PA11/PB12/PB13)\n光敏传感器(PA2 ADC)\n有源蜂鸣器(PC14)\nLED(PC15)\nESP8266(PA9/PA10 UART)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取霍尔编码器测速、光敏传感器光照、ESP8266网络时间\nOLED页面1实时显示车速/光照/时间/电机状态\nOLED页面2阈值设置（速度阈值/光照阈值/PWM设定）\n按键翻页与阈值调节\n速度超阈值蜂鸣器报警（支持消警）\n光照不足自动LED补光\nPWM控制电机调速\n按键调节电机速度与启停\nESP8266获取网络时间同步\nAPP主页面实时监控\nAPP控制面板远程控制电机\nAPP阈值设置页\nAPP报警判断与消警",
+    "hardware_cost": 28.71,
+    "status": "78",
+    "notes": ""
+  },
+  {
+    "id": 78,
+    "title": "工地环境监测系统",
+    "components": "ESP32-S3-N8R2(1)\nDHT11(1)(GPIO21)\nMQ-135(1)(GPIO1)\n声音传感器(1)(GPIO2)\nSSD1306 OLED(1)(GPIO8/GPIO9)\nLED(1)(GPIO35)\n有源蜂鸣器(1)(GPIO36)\n按键(4)(GPIO11/12/13/14)",
+    "features": "读取DHT11、MQ-135、声音传感器数据\nOLED双页面显示（页面1实时数据、页面2阈值设置）\n按键切换页面/阈值加减/消警\n温度超阈值声光报警\n空气质量超阈值声光报警\n噪音超阈值声光报警\nMQTT数据上传至云平台\nAPP主页面实时监控\nAPP报警状态展示\nAPP远程消警\nAPP远程阈值设置\nAPP端报警判断",
+    "hardware_cost": 62.16,
+    "status": "79",
+    "notes": ""
+  },
+  {
+    "id": 79,
+    "title": "婴儿车环境监测与安全看护系统",
+    "components": "ESP32-S3-N8R2(1)\nGP2Y1010AU0F PM2.5传感器(GPIO1/GPIO35)\nJW01 VOC传感器(GPIO4/GPIO5 UART)\nSGM5281 UV传感器(GPIO2)\nDS18B20(GPIO21)\nMPU6050(GPIO8/GPIO9 I2C)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\n有源蜂鸣器(GPIO37)\nLED×2(GPIO38/GPIO39)\n直流风扇(GPIO36)\n按键×4(GPIO11/12/13/14)",
+    "features": "读取PM2.5/VOC/UV/温度/三轴加速度传感器数据\nOLED页面1显示实时传感器数值和设备状态\nOLED页面2显示阈值设置界面，按键调节阈值\nPM2.5超标触发蜂鸣器+LED报警\nVOC超标触发蜂鸣器+LED报警\nUV指数超标触发蜂鸣器+LED报警（防晒提醒）\n温度超标触发蜂鸣器+LED报警\n异常移动/跌倒检测报警（响应时间<5秒）\n按键消警功能\n风扇AUTO模式温度联动自动控制\n风扇MANUAL模式按键/APP手动控制\n按键切换风扇AUTO/MANUAL模式\nAPP主页面实时监控传感器数据\nAPP报警状态展示与消警控制\nAPP阈值设置页远程修改阈值\nAPP风扇控制（MANUAL模式下）\nAPP端报警判断逻辑",
+    "hardware_cost": 71.94,
+    "status": "80",
+    "notes": ""
+  },
+  {
+    "id": 80,
+    "title": "模糊PID直流电机调速系统",
+    "components": "STM32F103C8T6(1)\nTB6612FNG(PB14/PB15/PA8)\n编码器(PB6/PB7)\n直流电机(1)\nSSD1306 OLED(PB8/PB9 I2C)\n按键x5(PA3/PA4/PA5/PA6/PA7)",
+    "features": "读取编码器速度传感器\n模糊PID闭环控制算法（自动应对外界干扰）\nPWM调速输出\n电机方向控制\n按键调节目标速度和PID参数\nOLED双页面显示（监控页+参数页）",
+    "hardware_cost": 18.01,
+    "status": "81",
+    "notes": ""
+  },
+  {
+    "id": 81,
+    "title": "远程甲烷气体浓度采集系统",
+    "components": "STM32F103C8T6\nMQ-4(PA0)\nDHT11(PA8)\nSSD1306 OLED(PB6/PB7 I2C)\n按键x4(PA15/PB3/PB4/PB5)\nAir780(PA9/PA10 UART)\n电池供电模块",
+    "features": "读取MQ-4甲烷浓度、DHT11温湿度\nOLED页面1实时显示甲烷浓度/温度/湿度/设备状态\nOLED页面2显示并调节甲烷/温度/湿度阈值\nKEY1切换OLED页面\nKEY2页面2当前阈值+1\nKEY3页面2当前阈值-1\nKEY4页面2循环切换阈值项\nAir780 4G上传传感器数据及阈值至MQTT\nAPP主页面实时监控甲烷浓度/温度/湿度\nAPP历史检测页展示数据走势图\nAPP报警管理页显示报警记录、消警操作\nAPP阈值设置页远程修改三项阈值\nAPP端报警判断（超阈值高亮提示）",
+    "hardware_cost": 21.11,
+    "status": "82",
+    "notes": ""
+  },
+  {
+    "id": 82,
+    "title": "多功能农业补光系统",
+    "components": "STM32F103C8T6(1)\n光敏电阻模块(PA0)\nDHT11(PA1)\nAPSPro2(PA2/PA3 UART)\nLED(PB11)\n有源蜂鸣器(PB10)\nESP8266(PA9/PA10 UART)\nSSD1306 OLED(PB6/PB7 I2C)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取光敏电阻光照强度、DHT11温度湿度\nOLED页面1实时显示光照、温度、湿度、LED状态、预警状态\nOLED页面2阈值设置（光照阈值、温度阈值）\nKEY1切换OLED页面\nKEY2页面1切换AUTO/MANUAL模式、页面2选择阈值项\nKEY3页面1MANUAL模式下切换LED开关、页面2增加阈值\nKEY4页面1消警、页面2减少阈值\n自动补光：光照低于阈值时自动开启LED（AUTO模式）\n高温预警：温度超过阈值时蜂鸣器报警，KEY4消警\nAPSPro2语音识别：语音指令控制补光灯开关和模式切换\nESP8266 WiFi上传环境数据至上位机\nAPP主页面实时监控光照、温度、湿度、LED状态\nAPP控制面板远程切换LED开关、切换AUTO/MANUAL模式\nAPP阈值设置页远程修改光照阈值、温度阈值\nAPP端高温预警判断和显示\nAPP远程消警功能",
+    "hardware_cost": 31.81,
+    "status": "83",
+    "notes": ""
+  },
+  {
+    "id": 83,
+    "title": "狭长型光伏发电站环境监测系统",
+    "components": "STM32F103C8T6×3\nSSD1306 OLED(PB6/PB7 I2C)\nLORA模块×3\n有源蜂鸣器(PB11)\nLED(PB10)\n按键×3(PA15/PB3/PB4)\nS12SD×2(PA0)\nDS18B20×2(PA8)\nDHT22×2(PB0)\n风速传感器×2(PA1)\n风向传感器×2(PA2)",
+    "features": "读取S12SD紫外线、DS18B20表面温度、DHT22温湿度、风速、风向传感器\nLORA接收两子节点数据\nOLED页面1实时监控两子节点数据\nOLED页面2阈值设置\nKEY1切换页面/切换选中阈值项\nKEY2增加当前阈值\nKEY3减少当前阈值\n超阈值声光报警（蜂鸣器+LED）\n子节点LORA定时发送传感器数据",
+    "hardware_cost": 17.1,
+    "status": "84",
+    "notes": ""
+  },
+  {
+    "id": 86,
+    "title": "智能书柜",
+    "components": "ESP32-S3-N8R8(1)\n红外避障传感器(GPIO2)\nDHT11(GPIO21)\n霍尔传感器(GPIO3)\n光敏电阻模块(GPIO1)\n电磁锁(GPIO4)\n舵机SG90(GPIO5)\n继电器(1)\nLED×2(GPIO38/GPIO39)\n有源蜂鸣器(GPIO40)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\n按键×4(GPIO11/12/13/14)",
+    "features": "读取红外避障传感器（书籍在位检测）\n读取DHT11温湿度传感器\n读取霍尔传感器（柜门状态）\n读取光敏电阻模块（光照检测）\nOLED双页面显示（监控页+设置页）\n按键控制（切换页面、开柜、消警、阈值调节）\n电磁锁柜门锁定控制\n舵机柜门开合辅助控制\n温湿度超阈值报警（蜂鸣器）\nLED状态指示（运行+报警）\nMQTT远程通信（数据上报+指令接收）\n客户端HTML实时数据展示\n客户端HTML远程开柜控制\n客户端HTML借书/还书操作\n客户端HTML阈值设置\n管理端HTML用户管理\n管理端HTML书籍信息管理\n管理端HTML借阅记录查询\n管理端HTML预约管理\n管理端HTML数据统计分析",
+    "hardware_cost": 51.93,
+    "status": "87",
+    "notes": ""
+  },
+  {
+    "id": 87,
+    "title": "林区火情监测系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA0)\nMQ-2(PA1)\n火焰传感器(PA2)\n有源蜂鸣器(PB0)\nSSD1306 OLED(PB6/PB7 I2C)\nNEO-6M GPS(PB10/PB11 UART3)\nESP8266(PA9/PA10 UART1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度传感器、MQ-2烟雾传感器、火焰传感器、NEO-6M GPS定位\nOLED页面1实时显示温湿度+烟雾+火焰信号\nOLED页面2显示/调节各传感器阈值\nKEY1切换页面，KEY2/KEY3调节阈值，KEY4消警\n温度/湿度/烟雾/火焰超阈值触发蜂鸣器本地报警\nESP8266 MQTT远程上传传感器数据+阈值+GPS经纬度\nAPP主页面实时监控温度湿度烟雾火焰\nAPP端报警判断（对照阈值对比传感器数据）\nAPP远程消警（发送指令01）\nAPP远程修改阈值（指令02~05）\nAPP显示GPS位置（逆地理编码显示城镇名）",
+    "hardware_cost": 49.82,
+    "status": "88",
+    "notes": ""
+  },
+  {
+    "id": 88,
+    "title": "教室设备管理节电系统",
+    "components": "STM32F103C8T6(1)\nDHT11(PA2)\nDS1302(PA4/PA5/PA6)\nBH1750(PB6/PB7 I2C)\nPIR串口模块(PA9/PA10 UART)\n磁簧开关(PA1)\n继电器×2(PB1/PB10)\n直流风扇(PB10)\nLED(PC13)\nSSD1306 OLED(PB6/PB7 I2C)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度、BH1750照度、DS1302时钟、PIR人体感应、磁簧开关门窗状态\n温度区间联动控制吊扇和空调（<15°C禁用吊扇允许制热≤20°C / 15-24°C全禁用 / 24-30°C允许吊扇禁用空调 / >30°C允许吊扇+制冷≥28°C）\n照度<300 Lux才允许开启照明，≥300 Lux禁止开灯\n无人自动关闭所有吊扇、空调、照明灯\n门窗状态检测\nOLED双页面显示（页面1实时监控/页面2阈值设置）\n按键操作（KEY1切换页面/KEY2切换选中项/KEY3减/KEY4加）",
+    "hardware_cost": 28.21,
+    "status": "89",
+    "notes": ""
+  },
+  {
+    "id": 89,
+    "title": "大气污染物检测系统",
+    "components": "STM32F103C8T6(1)\nMQ135有害气体传感器(PA0)\nMQ4甲烷传感器(PA1)\nJW01-CO传感器(PA2/PA3 UART2)\nGP2Y1010AU PM2.5传感器(PA4/PB0)\nESP8266(PA9/PA10 UART)\nSSD1306 OLED(PB6/PB7 I2C)\n有源蜂鸣器(PB1)\n按键x4(PA15/PB3/PB4/PB5)",
+    "features": "读取MQ135有害气体传感器\n读取MQ4甲烷传感器\n读取JW01-CO传感器(UART2)\n读取GP2Y1010AU PM2.5传感器\nOLED双页面显示(实时监控/阈值设置)\n按键切换页面与调节阈值\n气体超阈值本地蜂鸣器报警\nKEY4按键消警\nESP8266 MQTT无线数据上传\nAPP实时监控页展示四项气体数据\nAPP端报警判断与展示\nAPP远程阈值设置\nAPP远程消警操作",
+    "hardware_cost": 46.45,
+    "status": "90",
+    "notes": ""
+  },
+  {
+    "id": 90,
+    "title": "小型雨林观赏系统",
+    "components": "ESP32-S3-N8R8(1)\nDHT22(GPIO1)\n电容式土壤湿度传感器(GPIO2)\nBH1750光照传感器(GPIO8/GPIO9 I2C)\nJW-01 CO2传感器(GPIO4/GPIO5 UART2)\nSSD1306 OLED(GPIO8/GPIO9 I2C)\n雾化器(GPIO48)\n水泵(GPIO47)\n直流风扇(GPIO38)\n半导体制冷片(GPIO39)\n遮阳帘(GPIO40)\nLED(GPIO15)\n继电器x5(GPIO48/GPIO47/GPIO38/GPIO39/GPIO40)\n有源蜂鸣器(GPIO35)\n按键x4(GPIO11/GPIO12/GPIO13/GPIO14)",
+    "features": "读取DHT22温湿度、土壤湿度、BH1750光照、JW-01 CO2传感器\nKEY1短按切换OLED页面，长按切换AUTO/MANUAL模式\nKEY2/KEY3在页面2调节阈值，在MANUAL模式手动控制执行器\nKEY4消警（蜂鸣器关，报警状态清零）\nAUTO模式：温度过高→开风扇+半导体制冷；湿度低→开雾化器；光照不足→开LED；土壤干→开水泵；CO2异常→开风扇循环\nMANUAL模式：按键/APP直接控制执行器开关，传感器阈值不干预\nAPP主页面：实时监控温湿度/土壤/光照/CO2数据及执行器状态\nAPP控制面板：远程控制雾化器/水泵/风扇/半导体制冷片/LED/遮阳帘开关\nAPP阈值设置页：远程修改温度上限/湿度下限/土壤湿度下限/光照下限\nAPP报警判断：对照阈值判断异常并弹窗提醒",
+    "hardware_cost": 50.35,
+    "status": "91",
+    "notes": ""
+  },
+  {
+    "id": 91,
+    "title": "智能语音风扇",
+    "components": "STM32F103C8T6(1)\nDHT11(PA0)\nE18-D80NK(PA1)\n直流风扇(PB0/PB1)\nL9110S\nSSD1306 OLED(PB6/PB7 I2C)\nLU-ASR01(PA2/PA3 UART2)\nESP8266(PA9/PA10 UART1)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取DHT11温湿度传感器\n读取E18-D80NK人体状态\n自动模式：有人时温差/湿差越大风扇转速越高，无人自动关闭\n手动模式：KEY2切换选中设备，KEY3/KEY4控制开关和档位\n阈值模式：KEY2切换选中阈值，KEY3加KEY4减\nOLED双页面显示：监控页+阈值设置页\nLU-ASR01语音识别：切换模式/开关风扇/设置档位\nESP8266 WiFi通信：MQTT连接远程查看和控制\nAPP主页面实时监控温湿度/人体/风扇/模式\nAPP控制面板远程控制风扇开关/档位/模式\nAPP阈值设置页远程修改温度/湿度阈值\nAPP端报警判断（JS端实现）",
+    "hardware_cost": 0,
+    "status": "92",
+    "notes": ""
+  },
+  {
+    "id": 92,
+    "title": "智能光照电能监控系统",
+    "components": "STM32F103C8T6(1)\nBH1750(PB6/PB7)\nINA226(PB6/PB7)\nSSD1306 OLED(PB6/PB7)\nESP8266(PA9/PA10 UART)\n继电器(PB11)\n按键×4(PA15/PB3/PB4/PB5)",
+    "features": "读取BH1750光照传感器、INA226电能传感器\n实时显示光照/电压/电流/功率\n阈值设置（光照/电流/功率）\n过载保护自动断电（继电器控制）\nAUTO/MANUAL 控制模式切换\nWiFi MQTT 数据上报\nAPP主页面实时监控\nAPP报警判断\nAPP阈值设置\nAPP远程控制继电器（MANUAL模式）\nAPP远程消警",
+    "hardware_cost": 0,
+    "status": "93",
+    "notes": ""
+  },
+  {
+    "id": 93,
+    "title": "智能停车场系统",
+    "components": "STM32F103C8T6(1)\nHC-SR04×4(PA0/PA1/PA2/PA3/PB2)\nRC522(PA4/PA5/PA6/PA7/PB1 SPI1)\nDS3231(PB6/PB7 I2C)\nSG90舵机(PA8)\nSSD1306 OLED(1)\n按键×4\n有源蜂鸣器×1(PB8)\nLED×6(PA12/PB9/PB10/PB11/PC13/PB12)\nHC-05蓝牙(PA9/PA10 UART1)",
+    "features": "读取HC-SR04超声波传感器\n读取RC522 RFID模块\n读取DS3231时钟模块\n入口车辆检测(超声波触发)\n车位占用检测(超声波判断,3车位)\nRFID刷卡登记入场\nRFID刷卡计费出场\n道闸自动升降(SG90舵机)\n计时计费(基于DS3231时间差)\n费率设置(OLED页面2+按键)\n车位已满报警(红灯+蜂鸣器)\n无效卡片报警(蜂鸣器)\nAPP端车位状态查询(蓝牙)\nAPP端车位预约(锁定30分钟)\nAPP端预约状态查看\nAPP端支付确认\nAPP端费率查询",
+    "hardware_cost": 37.8,
+    "status": "94",
+    "notes": ""
+  },
+  {
+    "id": 94,
+    "title": "智能停车场系统",
+    "components": "STM32F103C8T6(1)\nHC-SR04×4(PA0/PA1/PA2/PA3/PB0)\nRC522(PA4/PA5/PA6/PA7/PB1 SPI1)\nDS1302(PA11/PA13/PA14)\nSG90舵机(PA8)\nSSD1306 OLED(1)\n按键×4\n有源蜂鸣器×1(PB8)\nLED×6(PB10/PB11/PB12/PB13/PB14/PB15)\nHC-05蓝牙(PA9/PA10 UART1)",
+    "features": "读取HC-SR04超声波传感器\n读取RC522 RFID模块\n读取DS1302时钟模块\n入口车辆检测(超声波触发)\n车位占用检测(超声波判断,3车位)\nRFID刷卡登记入场\nRFID刷卡计费出场\n道闸自动升降(SG90舵机)\n计时计费(基于DS1302时间差)\n费率设置(OLED页面2+按键)\n车位已满报警(红灯+蜂鸣器)\n无效卡片报警(蜂鸣器)\nAPP端车位状态查询(蓝牙)\nAPP端车位预约(锁定30分钟)\nAPP端预约状态查看\nAPP端支付确认\nAPP端费率查询",
+    "hardware_cost": 37.8,
+    "status": "95",
+    "notes": ""
+  },
+  {
+    "id": 95,
+    "title": "STM32秒表计时器",
+    "components": "STM32F103C8T6\nSSD1306 OLED 0.96寸 I2C(B8/B9)\nLED指示灯+220Ω电阻(PA1)\n按键x2(PA2/PA5)\n有源蜂鸣器(B12)",
+    "features": "上电LED熄灭，OLED显示StopWatch 1秒后显示00:00.000\n按PA5启动计时，数字走动，LED每秒闪烁一次\n再次按PA5暂停，数字静止，LED熄灭\n按PA2复位，全部清零，屏幕恢复00:00.000，LED熄灭\n计时满60秒蜂鸣器响1秒",
+    "hardware_cost": 21.8,
+    "status": "",
+    "notes": ""
+  }
+]

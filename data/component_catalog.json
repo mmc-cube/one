@@ -1,0 +1,1983 @@
+{
+  "summary": {
+    "total": 104,
+    "selectable": 86,
+    "with_library": 73
+  },
+  "source": {
+    "lib_base": "D:/niuma_modules_extracted",
+    "note": "Backend-only metadata retained for future component resource packaging."
+  },
+  "components": [
+    {
+      "id": "component-001",
+      "category": "主控-STM32F103C8T6",
+      "kind": "reference",
+      "keywords": [
+        "stm32f103"
+      ],
+      "total_table_hits": 68,
+      "library_matches": [
+        {
+          "folder": "STM32F103C8T6 最小系统",
+          "subdirs": [
+            "controllers",
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-002",
+      "category": "主控-ESP32",
+      "kind": "reference",
+      "keywords": [
+        "esp32"
+      ],
+      "total_table_hits": 16,
+      "library_matches": [],
+      "datasheet_url": "https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf",
+      "supplemental": false
+    },
+    {
+      "id": "component-003",
+      "category": "显示-OLED",
+      "kind": "display",
+      "keywords": [
+        "oled",
+        "ssd1306"
+      ],
+      "total_table_hits": 90,
+      "library_matches": [
+        {
+          "folder": "OLED 4 针 IIC 显示屏",
+          "subdirs": [
+            "controllers",
+            "display"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-004",
+      "category": "显示-LCD1602",
+      "kind": "display",
+      "keywords": [
+        "lcd1602"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "LCD1602 I2C液晶屏",
+          "subdirs": [],
+          "files": [
+            "lcd1602_i2c.c",
+            "lcd1602_i2c.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-005",
+      "category": "温湿度-DHT11",
+      "kind": "sensor",
+      "keywords": [
+        "dht11"
+      ],
+      "total_table_hits": 41,
+      "library_matches": [
+        {
+          "folder": "DHT11 温湿度传感器",
+          "subdirs": [
+            "controllers",
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-006",
+      "category": "温湿度-DHT22",
+      "kind": "sensor",
+      "keywords": [
+        "dht22"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "DHT22 温湿度传感器",
+          "subdirs": [],
+          "files": [
+            "dht22.c",
+            "dht22.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-007",
+      "category": "温湿度-SHT30",
+      "kind": "sensor",
+      "keywords": [
+        "sht30"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "SHT30 温湿度传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-008",
+      "category": "温湿度-BME280",
+      "kind": "sensor",
+      "keywords": [
+        "bme280"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "BME280 温湿度气压传感器",
+          "subdirs": [],
+          "files": [
+            "bme280.c",
+            "bme280.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-009",
+      "category": "温度-DS18B20",
+      "kind": "sensor",
+      "keywords": [
+        "ds18b20"
+      ],
+      "total_table_hits": 17,
+      "library_matches": [
+        {
+          "folder": "DS18B20 温度传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-010",
+      "category": "气体-MQ2",
+      "kind": "sensor",
+      "keywords": [
+        "mq-2",
+        "mq2"
+      ],
+      "total_table_hits": 14,
+      "library_matches": [
+        {
+          "folder": "MQ-2 烟雾传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-011",
+      "category": "气体-MQ4",
+      "kind": "sensor",
+      "keywords": [
+        "mq-4",
+        "mq4"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-012",
+      "category": "气体-MQ5",
+      "kind": "sensor",
+      "keywords": [
+        "mq-5",
+        "mq5"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-013",
+      "category": "气体-MQ7",
+      "kind": "sensor",
+      "keywords": [
+        "mq-7",
+        "mq7"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "MQ-7 一氧化碳传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-014",
+      "category": "气体-MQ135",
+      "kind": "sensor",
+      "keywords": [
+        "mq-135",
+        "mq135"
+      ],
+      "total_table_hits": 10,
+      "library_matches": [
+        {
+          "folder": "MQ-135 空气质量传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-015",
+      "category": "气体-JW01",
+      "kind": "sensor",
+      "keywords": [
+        "jw01",
+        "jw-01"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "JW01 三合一传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-016",
+      "category": "气体-ZPH01",
+      "kind": "sensor",
+      "keywords": [
+        "zph01"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "ZPH01 粉尘VOC传感器",
+          "subdirs": [],
+          "files": [
+            "zph01.c",
+            "zph01.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-017",
+      "category": "气体-ZE08",
+      "kind": "sensor",
+      "keywords": [
+        "ze08"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "ZE08-CH2O 甲醛传感器",
+          "subdirs": [],
+          "files": [
+            "ze08.c",
+            "ze08.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-018",
+      "category": "气体-ENS160",
+      "kind": "sensor",
+      "keywords": [
+        "ens160"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "ENS160 空气质量传感器",
+          "subdirs": [],
+          "files": [
+            "ens160.c",
+            "ens160.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-019",
+      "category": "气体-MH-Z19",
+      "kind": "sensor",
+      "keywords": [
+        "mh-z19",
+        "mhz19"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "MH-Z19 CO2传感器",
+          "subdirs": [],
+          "files": [
+            "mhz19.c",
+            "mhz19.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-020",
+      "category": "粉尘-GP2Y1010",
+      "kind": "sensor",
+      "keywords": [
+        "gp2y1010"
+      ],
+      "total_table_hits": 4,
+      "library_matches": [
+        {
+          "folder": "GP2Y1010 粉尘传感器",
+          "subdirs": [],
+          "files": [
+            "gp2y1010.c",
+            "gp2y1010.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-021",
+      "category": "粉尘-GP2Y1014",
+      "kind": "sensor",
+      "keywords": [
+        "gp2y1014"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-022",
+      "category": "粉尘-PMS7003",
+      "kind": "sensor",
+      "keywords": [
+        "pms7003"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "PMS7003 激光PM2.5传感器",
+          "subdirs": [],
+          "files": [
+            "pms7003.c",
+            "pms7003.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-023",
+      "category": "粉尘-D01",
+      "kind": "sensor",
+      "keywords": [
+        "d01"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "D01 粉尘传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-024",
+      "category": "光照-BH1750",
+      "kind": "sensor",
+      "keywords": [
+        "bh1750"
+      ],
+      "total_table_hits": 13,
+      "library_matches": [
+        {
+          "folder": "BH1750 光照传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-025",
+      "category": "光照-光敏",
+      "kind": "sensor",
+      "keywords": [
+        "光敏"
+      ],
+      "total_table_hits": 18,
+      "library_matches": [
+        {
+          "folder": "光敏传感器",
+          "subdirs": [
+            "controllers",
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-026",
+      "category": "超声波-HC-SR04",
+      "kind": "sensor",
+      "keywords": [
+        "hc-sr04"
+      ],
+      "total_table_hits": 9,
+      "library_matches": [
+        {
+          "folder": "HC-SR04 超声波传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-027",
+      "category": "人体-HC-SR501",
+      "kind": "sensor",
+      "keywords": [
+        "hc-sr501",
+        "人体红外"
+      ],
+      "total_table_hits": 10,
+      "library_matches": [
+        {
+          "folder": "HC-SR501 人体红外传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-028",
+      "category": "红外-对射对管",
+      "kind": "sensor",
+      "keywords": [
+        "红外对射",
+        "红外对管"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-029",
+      "category": "红外-避障",
+      "kind": "sensor",
+      "keywords": [
+        "红外避障"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-030",
+      "category": "红外-通用",
+      "kind": "sensor",
+      "keywords": [
+        "红外传感器"
+      ],
+      "total_table_hits": 8,
+      "library_matches": [
+        {
+          "folder": "HC-SR501 人体红外传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        },
+        {
+          "folder": "光电红外传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-031",
+      "category": "红外-光电",
+      "kind": "sensor",
+      "keywords": [
+        "光电红外"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "光电红外传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-032",
+      "category": "运动-MPU6050",
+      "kind": "sensor",
+      "keywords": [
+        "mpu6050"
+      ],
+      "total_table_hits": 7,
+      "library_matches": [
+        {
+          "folder": "MPU6050 六轴传感器",
+          "subdirs": [],
+          "files": [
+            "mpu6050.c",
+            "mpu6050.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-033",
+      "category": "运动-ADXL345",
+      "kind": "sensor",
+      "keywords": [
+        "adxl345"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "ADXL345 加速度传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-034",
+      "category": "运动-震动",
+      "kind": "sensor",
+      "keywords": [
+        "sw-420",
+        "sw420",
+        "震动"
+      ],
+      "total_table_hits": 4,
+      "library_matches": [
+        {
+          "folder": "震动传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-035",
+      "category": "心率-MAX30102",
+      "kind": "sensor",
+      "keywords": [
+        "max30102"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "MAX30102 心率血氧传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-036",
+      "category": "心率-MAX30100",
+      "kind": "sensor",
+      "keywords": [
+        "max30100"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-037",
+      "category": "心率-PulseSensor",
+      "kind": "sensor",
+      "keywords": [
+        "pulsesensor"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "PulseSensor 心率传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-038",
+      "category": "指纹-AS608",
+      "kind": "sensor",
+      "keywords": [
+        "as608",
+        "指纹"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "AS608 指纹识别模块",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-039",
+      "category": "称重-HX711",
+      "kind": "sensor",
+      "keywords": [
+        "hx711"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "HX711 电子秤模块",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-040",
+      "category": "压力-薄膜",
+      "kind": "sensor",
+      "keywords": [
+        "压力传感器",
+        "应变片",
+        "薄膜压力"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "薄膜压力传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-041",
+      "category": "水质-pH",
+      "kind": "sensor",
+      "keywords": [
+        "ph传感器",
+        "ph 传感器",
+        "ph模块"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "PH 传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-042",
+      "category": "水质-TDS",
+      "kind": "sensor",
+      "keywords": [
+        "tds传感器",
+        "tds 传感器"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-043",
+      "category": "水质-浊度",
+      "kind": "sensor",
+      "keywords": [
+        "浊度",
+        "浑浊度",
+        "tsd-10",
+        "ts-300b"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "TS-300B 浊度传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-044",
+      "category": "水质-溶解氧",
+      "kind": "sensor",
+      "keywords": [
+        "溶解氧"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-045",
+      "category": "土壤湿度",
+      "kind": "sensor",
+      "keywords": [
+        "土壤湿度",
+        "fc-28"
+      ],
+      "total_table_hits": 10,
+      "library_matches": [
+        {
+          "folder": "土壤湿度传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-046",
+      "category": "火焰",
+      "kind": "sensor",
+      "keywords": [
+        "火焰"
+      ],
+      "total_table_hits": 4,
+      "library_matches": [
+        {
+          "folder": "火焰传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-047",
+      "category": "门磁",
+      "kind": "sensor",
+      "keywords": [
+        "门磁",
+        "磁簧开关"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "门磁开关传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-048",
+      "category": "雨滴",
+      "kind": "sensor",
+      "keywords": [
+        "雨滴",
+        "水滴"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "雨滴传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-049",
+      "category": "水位",
+      "kind": "sensor",
+      "keywords": [
+        "水位传感器",
+        "risym"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "水位传感器",
+          "subdirs": [
+            "actuators",
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-050",
+      "category": "声音传感器",
+      "kind": "sensor",
+      "keywords": [
+        "声音传感器"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "数字式声音传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-051",
+      "category": "电压传感器",
+      "kind": "sensor",
+      "keywords": [
+        "电压传感器"
+      ],
+      "total_table_hits": 0,
+      "library_matches": [
+        {
+          "folder": "电压传感器",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-052",
+      "category": "风速风向",
+      "kind": "sensor",
+      "keywords": [
+        "风速",
+        "风向"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "风速传感器",
+          "subdirs": [],
+          "files": [
+            "windspeed.c",
+            "windspeed.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-053",
+      "category": "S12SD",
+      "kind": "sensor",
+      "keywords": [
+        "s12sd"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-054",
+      "category": "定位-GPS",
+      "kind": "sensor",
+      "keywords": [
+        "gps",
+        "neo-6m",
+        "atgm336h",
+        "bds"
+      ],
+      "total_table_hits": 9,
+      "library_matches": [
+        {
+          "folder": "GPS 定位模块",
+          "subdirs": [
+            "communication"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-055",
+      "category": "通信-ESP8266",
+      "kind": "reference",
+      "keywords": [
+        "esp8266"
+      ],
+      "total_table_hits": 49,
+      "library_matches": [
+        {
+          "folder": "ESP8266 WiFi 模块",
+          "subdirs": [
+            "communication"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-056",
+      "category": "通信-蓝牙",
+      "kind": "reference",
+      "keywords": [
+        "hc-05",
+        "蓝牙"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "JDY-31 蓝牙模块",
+          "subdirs": [],
+          "files": [
+            "jdy31.c",
+            "jdy31.h"
+          ]
+        },
+        {
+          "folder": "蓝牙模块",
+          "subdirs": [
+            "communication"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-057",
+      "category": "通信-JDY31",
+      "kind": "reference",
+      "keywords": [
+        "jdy-31"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "JDY-31 蓝牙模块",
+          "subdirs": [],
+          "files": [
+            "jdy31.c",
+            "jdy31.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-058",
+      "category": "通信-LoRa",
+      "kind": "reference",
+      "keywords": [
+        "lora",
+        "ra-02",
+        "sx1278"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "LoRa Ra-02 无线模块",
+          "subdirs": [],
+          "files": [
+            "lora_ra02.c",
+            "lora_ra02.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-059",
+      "category": "通信-GSM-SIM800",
+      "kind": "reference",
+      "keywords": [
+        "sim800"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "SIM800 GSM模块",
+          "subdirs": [],
+          "files": [
+            "sim800.c",
+            "sim800.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-060",
+      "category": "通信-4G-Air780",
+      "kind": "reference",
+      "keywords": [
+        "air780"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "Air780 4G模块",
+          "subdirs": [],
+          "files": [
+            "air780.c",
+            "air780.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-061",
+      "category": "通信-短信",
+      "kind": "reference",
+      "keywords": [
+        "短信"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-062",
+      "category": "通信-语音",
+      "kind": "reference",
+      "keywords": [
+        "su03t",
+        "语音模块",
+        "语音识别",
+        "ld3320",
+        "lu-asr01",
+        "syn6288",
+        "wt588d",
+        "jq6500",
+        "vs1053",
+        "apspro2",
+        "aps2pro"
+      ],
+      "total_table_hits": 9,
+      "library_matches": [
+        {
+          "folder": "JQ6500 语音模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        },
+        {
+          "folder": "VS1053 音频模块",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-063",
+      "category": "通信-ATK-MW193",
+      "kind": "reference",
+      "keywords": [
+        "atk-mw193"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "ATK-MW193 WiFi模块",
+          "subdirs": [],
+          "files": [
+            "atk_mw193.c",
+            "atk_mw193.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-064",
+      "category": "通信-串口",
+      "kind": "reference",
+      "keywords": [
+        "usart",
+        "串口"
+      ],
+      "total_table_hits": 14,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-065",
+      "category": "通信-调试UART",
+      "kind": "reference",
+      "keywords": [
+        "uart调试"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-066",
+      "category": "识别-RFID",
+      "kind": "sensor",
+      "keywords": [
+        "rc522",
+        "rfid"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "RFID 射频模块",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-067",
+      "category": "RTC-DS1302",
+      "kind": "sensor",
+      "keywords": [
+        "ds1302"
+      ],
+      "total_table_hits": 11,
+      "library_matches": [
+        {
+          "folder": "DS1302 时钟模块",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-068",
+      "category": "RTC-DS3231",
+      "kind": "sensor",
+      "keywords": [
+        "ds3231"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "DS3231 高精度RTC",
+          "subdirs": [],
+          "files": [
+            "ds3231.c",
+            "ds3231.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-069",
+      "category": "存储-AT24C02",
+      "kind": "reference",
+      "keywords": [
+        "at24c02"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-070",
+      "category": "存储-MicroSD",
+      "kind": "reference",
+      "keywords": [
+        "microsd",
+        "sd卡"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-071",
+      "category": "电源-INA226",
+      "kind": "sensor",
+      "keywords": [
+        "ina226"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "INA226 电源监测",
+          "subdirs": [],
+          "files": [
+            "ina226.c",
+            "ina226.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-072",
+      "category": "电源-ACS712",
+      "kind": "sensor",
+      "keywords": [
+        "acs712"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-073",
+      "category": "电源-供电",
+      "kind": "reference",
+      "keywords": [
+        "电池",
+        "12v转",
+        "降压",
+        "usb电源"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-074",
+      "category": "电机-步进-28BYJ48",
+      "kind": "actuator",
+      "keywords": [
+        "28byj-48",
+        "步进电机",
+        "uln2003"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [
+        {
+          "folder": "28BYJ48 五线四相步进电机",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-075",
+      "category": "电机-驱动-TB6612",
+      "kind": "actuator",
+      "keywords": [
+        "tb6612",
+        "tb6612fng"
+      ],
+      "total_table_hits": 4,
+      "library_matches": [
+        {
+          "folder": "TB6612 电机驱动",
+          "subdirs": [],
+          "files": [
+            "tb6612.c",
+            "tb6612.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-076",
+      "category": "电机-驱动-L298N",
+      "kind": "actuator",
+      "keywords": [
+        "l298n"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [
+        {
+          "folder": "L298N 电机驱动",
+          "subdirs": [],
+          "files": [
+            "l298n.c",
+            "l298n.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-077",
+      "category": "电机-驱动-L9110S",
+      "kind": "actuator",
+      "keywords": [
+        "l9110s"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-078",
+      "category": "电机-舵机",
+      "kind": "actuator",
+      "keywords": [
+        "舵机",
+        "sg90"
+      ],
+      "total_table_hits": 10,
+      "library_matches": [
+        {
+          "folder": "舵机",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-079",
+      "category": "电机-直流",
+      "kind": "actuator",
+      "keywords": [
+        "直流电机",
+        "直流有刷"
+      ],
+      "total_table_hits": 6,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-080",
+      "category": "电机-编码器",
+      "kind": "sensor",
+      "keywords": [
+        "编码器",
+        "13ppr"
+      ],
+      "total_table_hits": 5,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-081",
+      "category": "蜂鸣器-有源",
+      "kind": "actuator",
+      "keywords": [
+        "有源蜂鸣器",
+        "有源蝇鸣器"
+      ],
+      "total_table_hits": 71,
+      "library_matches": [
+        {
+          "folder": "有源蜂鸣器",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-082",
+      "category": "蜂鸣器-通用",
+      "kind": "actuator",
+      "keywords": [
+        "蜂鸣器"
+      ],
+      "total_table_hits": 78,
+      "library_matches": [
+        {
+          "folder": "有源蜂鸣器",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-083",
+      "category": "声音-DFPlayer",
+      "kind": "actuator",
+      "keywords": [
+        "dfplayer",
+        "mp3"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "DFPlayer Mini MP3模块",
+          "subdirs": [],
+          "files": [
+            "dfplayer.c",
+            "dfplayer.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-084",
+      "category": "声音-扬声器",
+      "kind": "actuator",
+      "keywords": [
+        "扬声器"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-085",
+      "category": "继电器",
+      "kind": "actuator",
+      "keywords": [
+        "继电器"
+      ],
+      "total_table_hits": 34,
+      "library_matches": [
+        {
+          "folder": "5V 继电器模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-086",
+      "category": "电磁锁",
+      "kind": "actuator",
+      "keywords": [
+        "电磁锁"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-087",
+      "category": "MOSFET",
+      "kind": "actuator",
+      "keywords": [
+        "mosfet"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-088",
+      "category": "水泵",
+      "kind": "actuator",
+      "keywords": [
+        "水泵",
+        "排水泵",
+        "换水泵",
+        "加药泵",
+        "增氧泵"
+      ],
+      "total_table_hits": 12,
+      "library_matches": [
+        {
+          "folder": "水泵模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-089",
+      "category": "风扇",
+      "kind": "actuator",
+      "keywords": [
+        "风扇"
+      ],
+      "total_table_hits": 18,
+      "library_matches": [
+        {
+          "folder": "5V 风扇模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-090",
+      "category": "加热",
+      "kind": "actuator",
+      "keywords": [
+        "加热",
+        "制热",
+        "ptc"
+      ],
+      "total_table_hits": 8,
+      "library_matches": [
+        {
+          "folder": "PTC 加热片模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-091",
+      "category": "制冷",
+      "kind": "actuator",
+      "keywords": [
+        "制冷",
+        "半导体制冷",
+        "tec"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "TEC 制冷片模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-092",
+      "category": "雾化加湿",
+      "kind": "actuator",
+      "keywords": [
+        "雾化",
+        "加湿器"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-093",
+      "category": "UV杀菌",
+      "kind": "actuator",
+      "keywords": [
+        "uv",
+        "紫外线杀菌"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-094",
+      "category": "按键",
+      "kind": "sensor",
+      "keywords": [
+        "按键",
+        "key",
+        "矩阵键盘"
+      ],
+      "total_table_hits": 91,
+      "library_matches": [
+        {
+          "folder": "4X4 矩阵键盘",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": true
+    },
+    {
+      "id": "component-095",
+      "category": "旋钮电位器",
+      "kind": "sensor",
+      "keywords": [
+        "旋钮",
+        "电位器"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-096",
+      "category": "霍尔",
+      "kind": "sensor",
+      "keywords": [
+        "a1344",
+        "霍尔"
+      ],
+      "total_table_hits": 4,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-097",
+      "category": "LED",
+      "kind": "actuator",
+      "keywords": [
+        "led"
+      ],
+      "total_table_hits": 87,
+      "library_matches": [
+        {
+          "folder": "OLED 4 针 IIC 显示屏",
+          "subdirs": [
+            "controllers",
+            "display"
+          ],
+          "files": []
+        },
+        {
+          "folder": "大功率 LED 模块",
+          "subdirs": [
+            "actuators"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-098",
+      "category": "红外遥控",
+      "kind": "reference",
+      "keywords": [
+        "红外遥控"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "红外遥控 NEC",
+          "subdirs": [],
+          "files": [
+            "ir_nec.c",
+            "ir_nec.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-099",
+      "category": "红外循迹",
+      "kind": "sensor",
+      "keywords": [
+        "红外循迹",
+        "tcrt5000"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-100",
+      "category": "ADC采集",
+      "kind": "sensor",
+      "keywords": [
+        "adc模拟采集",
+        "adc采集"
+      ],
+      "total_table_hits": 3,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-101",
+      "category": "摄像头",
+      "kind": "sensor",
+      "keywords": [
+        "摄像头",
+        "esp32-cam",
+        "视觉",
+        "esp cam"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [
+        {
+          "folder": "ESPCAM + 摄像头组合",
+          "subdirs": [
+            "sensors"
+          ],
+          "files": []
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-102",
+      "category": "遮阳帘",
+      "kind": "actuator",
+      "keywords": [
+        "遮阳帘",
+        "遗阳帘"
+      ],
+      "total_table_hits": 2,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-103",
+      "category": "激光测距",
+      "kind": "sensor",
+      "keywords": [
+        "vl53l0x",
+        "tof",
+        "e18-d80nk"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [
+        {
+          "folder": "VL53L0X 激光测距",
+          "subdirs": [],
+          "files": [
+            "vl53l0x.c",
+            "vl53l0x.h"
+          ]
+        }
+      ],
+      "datasheet_url": "",
+      "supplemental": false
+    },
+    {
+      "id": "component-104",
+      "category": "纯软件",
+      "kind": "reference",
+      "keywords": [
+        "纯软件",
+        "face-recognition",
+        "opencv-python"
+      ],
+      "total_table_hits": 1,
+      "library_matches": [],
+      "datasheet_url": "",
+      "supplemental": false
+    }
+  ]
+}

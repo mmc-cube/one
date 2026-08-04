@@ -1,0 +1,17 @@
+.env
+__pycache__/
+*.pyc
+*.log
+data/activity_store.json
+data/activity_store.json.tmp
+tmp/
+
+# 大文件 / 与 Web 应用无关的目录
+tools/
+audio-previews/
+characters/
+product-video-pipeline/
+product-video-pipeline-SKILL.zh-CN.md
+artifacts/
+scripts/
+docs/

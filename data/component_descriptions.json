@@ -1,0 +1,38 @@
+{
+  "sensor": [
+    {"name": "DHT11", "aliases": ["DHT11"], "description": "读取环境温度与相对湿度数据。"},
+    {"name": "DHT22", "aliases": ["DHT22"], "description": "读取环境温度与相对湿度数据，并提供比 DHT11 更高的测量精度。"},
+    {"name": "DS18B20", "aliases": ["DS18B20"], "description": "读取空气、液体或物体表面的数字温度数据。"},
+    {"name": "BH1750", "aliases": ["BH1750"], "description": "读取环境光照强度数据，供亮度判断与自动控制使用。"},
+    {"name": "土壤湿度传感器", "aliases": ["土壤湿度"], "description": "读取土壤含水程度的模拟数据，供缺水判断与灌溉控制使用。"},
+    {"name": "MQ-2", "aliases": ["MQ-2", "MQ2"], "description": "读取烟雾及可燃气体浓度变化数据，供火灾或泄漏报警使用。"},
+    {"name": "MQ-135", "aliases": ["MQ-135", "MQ135"], "description": "读取空气质量相关气体浓度变化数据，供环境污染判断使用。"},
+    {"name": "人体红外传感器", "aliases": ["人体红外", "PIR", "红外传感器"], "description": "检测监测区域内是否有人体活动，并输出有人或无人状态。"},
+    {"name": "HC-SR04", "aliases": ["HC-SR04", "超声波"], "description": "读取传感器与目标物之间的距离数据。"},
+    {"name": "火焰传感器", "aliases": ["火焰传感器"], "description": "检测指定波段的火焰辐射，并输出火焰存在状态。"},
+    {"name": "水位传感器", "aliases": ["水位传感器", "液位传感器"], "description": "读取容器内液位高低或是否到达设定位置。"},
+    {"name": "浊度传感器", "aliases": ["浊度传感器"], "description": "读取水体浑浊程度数据，供水质状态判断使用。"},
+    {"name": "pH 传感器", "aliases": ["PH传感器", "PH 传感器", "pH 传感器"], "description": "读取液体酸碱度数据，供水质监测与调节使用。"},
+    {"name": "4×4矩阵键盘", "aliases": ["4×4矩阵键盘", "4X4矩阵键盘", "矩阵键盘"], "description": "读取用户输入的数字、密码或功能按键。"},
+    {"name": "AS608 指纹识别模块", "aliases": ["AS608", "指纹识别"], "description": "采集并比对用户指纹特征，输出身份验证结果。"},
+    {"name": "RC522 射频识别模块", "aliases": ["RC522", "RFID", "射频识别"], "description": "读取 IC 卡或射频标签编号，输出刷卡身份信息。"}
+  ],
+  "display": [
+    {"name": "SSD1306 OLED", "aliases": ["SSD1306", "OLED"], "description": "显示传感器数据、参数阈值、工作模式、设备状态和告警信息。"},
+    {"name": "LCD1602", "aliases": ["LCD1602", "1602"], "description": "以字符形式显示关键测量值、设置参数和系统状态。"},
+    {"name": "TFT 彩色显示屏", "aliases": ["TFT", "彩色显示屏", "彩屏"], "description": "以图形化页面显示测量数据、状态信息和交互菜单。"}
+  ],
+  "actuator": [
+    {"name": "有源蜂鸣器", "aliases": ["有源蜂鸣器", "蜂鸣器"], "description": "接收单片机开关信号并发出声音，用于操作提示或异常报警。"},
+    {"name": "舵机", "aliases": ["舵机", "SG90"], "description": "根据 PWM 控制信号转动到指定角度，用于模拟门锁、阀门或机构开合。"},
+    {"name": "步进电机", "aliases": ["步进电机", "28BYJ-48", "ULN2003"], "description": "根据脉冲信号按设定方向和步数转动，用于精确控制机构位置。"},
+    {"name": "水泵", "aliases": ["水泵"], "description": "根据控制信号启停液体输送，用于灌溉、补水或循环。"},
+    {"name": "增氧泵", "aliases": ["增氧泵", "气泵", "氧气泵"], "description": "根据溶解氧或定时控制信号向水体供气，提高养殖水体含氧量。"},
+    {"name": "补光灯", "aliases": ["补光灯", "补光"], "description": "根据光照阈值启停，为温室或种植环境补充照明。"},
+    {"name": "风扇", "aliases": ["风扇"], "description": "根据控制信号启停通风，用于散热、降温或空气交换。"},
+    {"name": "加热器", "aliases": ["加热棒", "加热片", "加热器"], "description": "根据控制信号启停加热负载，用于提高目标环境或介质温度。"},
+    {"name": "电磁锁", "aliases": ["电磁锁", "电子锁"], "description": "根据开锁信号吸合或释放锁舌，实现门锁的锁定与解锁。"},
+    {"name": "继电器驱动模块", "aliases": ["继电器"], "description": "隔离并切换较大电压或电流的外部负载。"},
+    {"name": "LED", "aliases": ["LED"], "description": "根据 GPIO 电平显示运行、通过、失败或告警状态。"}
+  ]
+}

@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: baili-electronics
+    restart: unless-stopped
+    ports:
+      - "43210:43210"
+    env_file:
+      - ../.env
+    volumes:
+      - ../data:/app/data
+      # 元器件资料库目录（上传服务器后的实际路径）
+      - /data/niuma_modules_extracted:/niuma_modules:ro
+    environment:
+      - MCU_HOST=0.0.0.0
+      - MCU_PORT=43210
+      - MCU_LIB_BASE=/niuma_modules
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:43210/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  # 可选：Nginx 反向代理 + HTTPS
+  nginx:
+    image: nginx:alpine
+    container_name: baili-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../frontend:/usr/share/nginx/html:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - ./certbot/www:/var/www/certbot:ro
+    depends_on:
+      - app
